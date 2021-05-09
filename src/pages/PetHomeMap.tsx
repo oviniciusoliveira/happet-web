@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import logoImg from "./../images/logo.png";
 import { Link, useHistory } from "react-router-dom";
 import { FiPlus, FiArrowRight, FiArrowLeft } from "react-icons/fi";
 

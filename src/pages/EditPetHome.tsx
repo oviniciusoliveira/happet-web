@@ -1,9 +1,9 @@
-import React, { useState, FormEvent, ChangeEvent, useEffect } from "react";
+import { useState, FormEvent, ChangeEvent, useEffect } from "react";
 
 import Sidebar from "./../components/Sidebar";
 
-import { FiPlus } from "react-icons/fi";
-import { ImCross } from "react-icons/im";
+import { FiPlus, FiCheck } from "react-icons/fi";
+import { ImCross, ImCancelCircle } from "react-icons/im";
 import mapIcon from "./../utils/mapIcon";
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import PrimaryButton from "./../components/PrimaryButton";
@@ -11,6 +11,9 @@ import api from "../services/api";
 import { useHistory, useParams } from "react-router-dom";
 import { InputBlock } from "./../styles/global";
 import { PetHomeParams } from "./PetHome";
+import { toast } from "react-toastify";
+
+import { useDashboard } from "./../contexts/dashboard";
 
 import {
   Container,
@@ -22,6 +25,8 @@ import {
   ImagePreview,
 } from "./../styles/pages/createPetHome";
 
+import { AcceptContainer } from "./../styles/pages/editPetHome";
+
 interface Image {
   url: string;
   name: string;
@@ -30,24 +35,51 @@ interface Image {
 export default function EditPetHome() {
   const history = useHistory();
   const params = useParams<PetHomeParams>();
-  const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
+  const [id, setId] = useState();
   const [name, setName] = useState("");
   const [about, setAbout] = useState("");
   const [instructions, setInstructions] = useState("");
+  const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
   const [opening_hours, setOpeningHours] = useState("");
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<Image[]>([]);
+  const [whatsapp, setWhatsapp] = useState("");
+  const [is_accepted, setIsAccepted] = useState(false);
+  const [removeImage, setRemoveImage] = useState<any>([]);
+  const { page, setPage } = useDashboard();
 
   useEffect(() => {
     async function loadPetHome() {
-      const { data } = await api.get(`/pet-homes/${params.id}`);
-      console.log(data);
+      const { data: petHome } = await api.get(`/pet-homes/${params.id}`);
+
+      setId(petHome.id);
+      setName(petHome.name);
+      setAbout(petHome.about);
+      setInstructions(petHome.instructions);
+      setPosition({ latitude: petHome.latitude, longitude: petHome.longitude });
+      setOpeningHours(petHome.opening_hours);
+      setOpenOnWeekends(petHome.open_on_weekends);
+      setImages(petHome.images);
+      setPreviewImages(petHome.images);
+      setWhatsapp(petHome.whatsapp);
+      setIsAccepted(petHome.is_accepted);
     }
     loadPetHome();
   }, [params.id]);
 
-  function MyComponent() {
+  async function handleReject() {
+    try {
+      const response = await api.delete(`/pet-homes/${params.id}`);
+      toast.success(response);
+      history.push("/pending-pet-homes");
+      setPage("pending-pet-homes")
+    } catch (error) {
+      toast.error("Erro ao Rejeitar o Pedido!");
+    }
+  }
+
+  function MapClickComponent() {
     useMapEvents({
       click: (event) => {
         const { lat, lng } = event.latlng;
@@ -66,6 +98,7 @@ export default function EditPetHome() {
     );
     setPreviewImages(newPreviewImages);
     setImages(newImages);
+    setRemoveImage((prevImages: any) => [...prevImages, image]);
   }
 
   function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {
@@ -83,53 +116,65 @@ export default function EditPetHome() {
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+    try {
+      const { latitude, longitude } = position;
 
-    const { latitude, longitude } = position;
+      const data = new FormData();
 
-    const data = new FormData();
+      data.append("id", String(id));
+      data.append("name", name);
+      data.append("about", about);
+      data.append("latitude", String(latitude));
+      data.append("longitude", String(longitude));
+      data.append("instructions", instructions);
+      data.append("opening_hours", opening_hours);
+      data.append("open_on_weekends", String(open_on_weekends));
+      data.append("whatsapp", whatsapp);
+      data.append("is_accepted", String(true));
+      images.forEach((image) => {
+        data.append("images", image);
+      });
+      removeImage.forEach((image: any) => {
+        data.append("id_images_remove", image.id);
+      });
+      
 
-    data.append("name", name);
-    data.append("about", about);
-    data.append("latitude", String(latitude));
-    data.append("longitude", String(longitude));
-    data.append("instructions", instructions);
-    data.append("opening_hours", opening_hours);
-    data.append("open_on_weekends", String(open_on_weekends));
-    images.forEach((image) => {
-      data.append("images", image);
-    });
-
-    await api.post("pet-homes", data);
-    alert("Cadastro realizado com sucesso!");
-    history.push("/app");
+      await api.put("pet-homes", data);
+      toast.success("Pet Home Cadastrado");
+      history.push("/accepted-pet-homes");
+      setPage("accepted-pet-homes")
+    } catch (error) {
+      toast.error("Não foi possível cadastrar o Pet Home!");
+    }
   }
 
   return (
     <Container>
       <Sidebar />
       <Main>
-        <Form onSubmit={handleSubmit} className="create-petHome-form">
+        <Form onSubmit={handleSubmit}>
           <Fieldset>
             <legend>Dados</legend>
-
-            <MapContainer
-              center={[-23.5653115, -46.6411145]}
-              zoom={15}
-              style={{ width: "100%", height: 280 }}
-            >
-              <MyComponent />
-              <TileLayer
-                url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
-              />
-
-              {position.latitude !== 0 && (
-                <Marker
-                  interactive={false}
-                  icon={mapIcon}
-                  position={[position.latitude, position.longitude]}
+            {position.latitude !== 0 && position.longitude !== 0 && (
+              <MapContainer
+                zoom={15}
+                style={{ width: "100%", height: 280 }}
+                center={[position.latitude, position.longitude]}
+              >
+                <MapClickComponent />
+                <TileLayer
+                  url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
                 />
-              )}
-            </MapContainer>
+
+                {position.latitude !== 0 && position.longitude && (
+                  <Marker
+                    interactive={false}
+                    icon={mapIcon}
+                    position={[position.latitude, position.longitude]}
+                  />
+                )}
+              </MapContainer>
+            )}
 
             <InputBlock>
               <label htmlFor="name">Nome</label>
@@ -162,16 +207,16 @@ export default function EditPetHome() {
               <ImagesContainer>
                 {previewImages.map((image) => {
                   return (
-                    <ImagePreview key={image.name}>
+                    <ImagePreview key={image.url}>
+                      <img src={image.url} alt={name} />
                       <button onClick={() => handleRemoveImages(image)}>
                         <ImCross size={20} />
                       </button>
-                      <img src={image.url} alt={name} />
                     </ImagePreview>
                   );
                 })}
                 <label htmlFor="image[]" className="new-image">
-                  <FiPlus size={24} color="#15b6d6" />
+                  <FiPlus size={24} color="rgb(255, 26, 115)" />
                 </label>
               </ImagesContainer>
               <input
@@ -209,6 +254,15 @@ export default function EditPetHome() {
             </InputBlock>
 
             <InputBlock>
+              <label htmlFor="whatsapp">Whatsapp</label>
+              <input
+                id="whatsapp"
+                value={whatsapp}
+                onChange={(e) => setWhatsapp(e.target.value)}
+              />
+            </InputBlock>
+
+            <InputBlock>
               <label htmlFor="open_on_weekends">Atende fim de semana</label>
 
               <InputBlock>
@@ -232,7 +286,22 @@ export default function EditPetHome() {
             </InputBlock>
           </Fieldset>
 
-          <PrimaryButton type="submit">Confirmar</PrimaryButton>
+          {is_accepted ? (
+            <PrimaryButton type="submit">Confirmar</PrimaryButton>
+          ) : (
+            <AcceptContainer>
+              <button
+                onClick={handleReject}
+                type="button"
+                className="reject-button"
+              >
+                <ImCancelCircle /> Recusar
+              </button>
+              <button onClick={handleSubmit} type="button">
+                <FiCheck /> Aceitar
+              </button>
+            </AcceptContainer>
+          )}
         </Form>
       </Main>
     </Container>

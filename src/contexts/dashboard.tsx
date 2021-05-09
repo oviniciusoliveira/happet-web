@@ -1,5 +1,4 @@
-import { createContext, useState, useContext, useEffect } from "react";
-import { useHistory } from "react-router";
+import { createContext, useState, useContext } from "react";
 
 const DashboardContext = createContext({} as any);
 

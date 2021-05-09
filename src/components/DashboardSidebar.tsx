@@ -26,16 +26,15 @@ function DashboardSidebar() {
   function handleLogout() {
     signOut();
     toast.success("Sessão Finalizada");
+    setPage("accepted-pet-homes");
     history.push("/");
   }
 
   return (
     <Container>
       <img src={logoImg} alt="Happet" />
-      {console.log(page)}
       <Nav>
         <button type="button" onClick={(e) => {
-          console.log();
           handlePage("accepted-pet-homes")
         }} className={page === "accepted-pet-homes" ? "active" : ""}>
           <FiMapPin size={28} />

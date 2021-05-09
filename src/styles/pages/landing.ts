@@ -14,6 +14,8 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
+  padding: 1rem;
+
 `;
 
 export const Content = styled.div`
@@ -29,6 +31,7 @@ export const Content = styled.div`
   align-items: flex-start;
   flex-direction: column;
   justify-content: space-between;
+  
 
   background: ${() => `url(${landingImg}) no-repeat 80%`};
   background-size: 450px;

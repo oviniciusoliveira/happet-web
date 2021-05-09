@@ -10,6 +10,7 @@ import PrimaryButton from "./../components/PrimaryButton";
 import api from "../services/api";
 import { useHistory } from "react-router-dom";
 import { InputBlock } from "./../styles/global";
+import { toast } from "react-toastify";
 
 import {
   Container,
@@ -91,9 +92,13 @@ export default function PetHomesMap() {
       data.append("images", image);
     });
 
-    await api.post("pet-homes", data);
-    alert("Cadastro realizado com sucesso!");
-    history.push("/app");
+    try {
+      await api.post("pet-homes", data);
+      toast.success("Pet Home criado com Sucesso!");
+      history.push("/app");
+    } catch (error) {
+      toast.error("Não foi possível criar seu Pet Home, verifique os Campos!");
+    }
   }
 
   return (
@@ -206,7 +211,7 @@ export default function PetHomesMap() {
                 id="whatsapp"
                 value={whatsapp}
                 onChange={(event) => {
-                  setOpeningHours(event.target.value);
+                  setWhatsapp(event.target.value);
                 }}
               />
             </InputBlock>

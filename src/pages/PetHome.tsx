@@ -23,7 +23,7 @@ import {
 
 import { useParams } from "react-router-dom";
 
-interface PetHomeInterface {
+export interface PetHomeInterface {
   latitude: number;
   longitude: number;
   name: string;

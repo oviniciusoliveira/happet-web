@@ -59,6 +59,7 @@ export const InputBlock = styled.div`
   input {
     height: 6.4rem;
     padding: 0 1.6rem;
+    margin-bottom: 1rem;
   }
 
   textarea {
@@ -72,7 +73,7 @@ export const InputBlock = styled.div`
   .new-image {
     height: 96px;
     background: #f5f8fa;
-    border: 1px dashed #96d2f0;
+    border: 1px dashed rgb(255, 26, 115);
     border-radius: 20px;
     cursor: pointer;
 

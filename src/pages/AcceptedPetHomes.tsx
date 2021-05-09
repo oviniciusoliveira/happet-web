@@ -11,7 +11,6 @@ function AcceptedPetHomes() {
   useEffect(() => {
     async function getPetHomes() {
       const { data } = await api.get("/pet-homes");
-      console.log("data", data);
       setAcceptedPetHomes(data.filter((petHome: any) => petHome.is_accepted));
     }
     getPetHomes();
