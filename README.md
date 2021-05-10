@@ -7,7 +7,7 @@
        - [X] Landing Page
        - [X] Mapa com Pet Homes
        - [X] Cadastro de novo Pet Home
-       - [ ] Sucesso ao Cadastrar novo Pet Home
+       - [X] Sucesso ao Cadastrar novo Pet Home
        - [X] Detalhes de um Pet Home
        - [X] Login
        - [X] Cadastro de usuários

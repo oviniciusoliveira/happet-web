@@ -27,13 +27,18 @@ interface PetHome {
 
 function PetHomeMap() {
   const [petHomes, setPetHomes] = useState<PetHome[]>([]);
+  const [acceptedPetHomes, setAcceptedPetHomes] = useState<PetHome[]>([]);
   const history = useHistory();
 
   useEffect(() => {
     api.get("pet-homes").then((response) => {
       setPetHomes(response.data);
+      setAcceptedPetHomes(
+        petHomes.filter((petHome: any) => petHome.is_accepted)
+      );
     });
-  }, []);
+  }, [petHomes]);
+
   return (
     <Container>
       <Aside>
@@ -62,7 +67,7 @@ function PetHomeMap() {
           url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
         />
 
-        {petHomes.map((petHome) => {
+        {acceptedPetHomes.map((petHome) => {
           return (
             <Marker
               key={petHome.id}
