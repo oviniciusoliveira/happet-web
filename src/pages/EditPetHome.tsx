@@ -47,7 +47,7 @@ export default function EditPetHome() {
   const [whatsapp, setWhatsapp] = useState("");
   const [is_accepted, setIsAccepted] = useState(false);
   const [removeImage, setRemoveImage] = useState<any>([]);
-  const { page, setPage } = useDashboard();
+  const { setPage } = useDashboard();
 
   useEffect(() => {
     async function loadPetHome() {

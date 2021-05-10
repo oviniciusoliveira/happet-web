@@ -12,11 +12,12 @@ import {
   InputBlock,
   InputPasswordBlock,
 } from "../styles/global";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import GoBack from "./../components/GoBack";
 import { useAuth } from "./../contexts/auth";
+import crypto from "crypto-js";
 
 function SignIn() {
   const history = useHistory();
@@ -26,12 +27,47 @@ function SignIn() {
   const [isLoginSaved, setIsLoginSaved] = useState(false);
   const { signIn, loading } = useAuth();
 
+  // ComponentDidMount
+  useEffect(() => {
+    function getUserLogin() {
+      const storagedLoginEmail = localStorage.getItem("@happet-login-email");
+      const storagedLoginPassword = localStorage.getItem(
+        "@happet-login-password"
+      );
+      if (storagedLoginEmail && storagedLoginPassword) {
+        const crypto_key = process.env.REACT_APP_CRYPTO_KEY || "";
+        const bytes = crypto.AES.decrypt(
+          JSON.parse(storagedLoginPassword),
+          crypto_key
+        );
+        const decryptedPassword = bytes.toString(crypto.enc.Utf8);
+        setEmail(JSON.parse(storagedLoginEmail));
+        setPassword(decryptedPassword);
+        setIsLoginSaved(true);
+      }
+    }
+
+    getUserLogin();
+  }, []);
+
   async function handleLogin() {
     const isLoginSucceded = await signIn({ email, password });
 
     if (isLoginSucceded) {
       if (isLoginSaved) {
-        
+        const crypto_key = process.env.REACT_APP_CRYPTO_KEY || "";
+        const encryptedPassword = crypto.AES.encrypt(
+          password,
+          crypto_key
+        ).toString();
+        localStorage.setItem("@happet-login-email", JSON.stringify(email));
+        localStorage.setItem(
+          "@happet-login-password",
+          JSON.stringify(encryptedPassword)
+        );
+      } else {
+        localStorage.removeItem("@happet-login-email");
+        localStorage.removeItem("@happet-login-password");
       }
     }
   }

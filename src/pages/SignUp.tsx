@@ -1,10 +1,8 @@
 import {
   Container,
   FormWrapper,
-  RememberContainer,
 } from "./../styles/pages/signin";
 import SidePanel from "./../components/SidePanel";
-import Loading from "./../components/Loading";
 import {
   ConfirmButton,
   Fieldset,
@@ -12,11 +10,10 @@ import {
   InputBlock,
   InputPasswordBlock,
 } from "../styles/global";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import GoBack from "./../components/GoBack";
-import { useAuth } from "./../contexts/auth";
 import api from "../services/api";
 import { toast } from "react-toastify";
 
