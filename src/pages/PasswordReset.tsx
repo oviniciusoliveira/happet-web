@@ -1,10 +1,10 @@
-import {
-  Container,
-  FormWrapper,
-  RememberContainer,
-} from "./../styles/pages/signin";
-import SidePanel from "./../components/SidePanel";
-import Loading from "./../components/Loading";
+import { useState } from "react";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useHistory } from "react-router";
+import { toast } from "react-toastify";
+import GoBack from "../components/GoBack";
+import SidePanel from "../components/SidePanel";
+import api from "../services/api";
 import {
   ConfirmButton,
   Fieldset,
@@ -12,33 +12,27 @@ import {
   InputBlock,
   InputPasswordBlock,
 } from "../styles/global";
-import React, { useState } from "react";
-import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link, useHistory } from "react-router-dom";
-import GoBack from "./../components/GoBack";
-import { useAuth } from "./../contexts/auth";
-import api from "../services/api";
-import { toast } from "react-toastify";
+import { Container, FormWrapper } from "./../styles/pages/forgotPassword";
 
-function SignIn() {
-  const history = useHistory();
-  const [name, setName] = useState("");
+function PasswordReset() {
+  const [token, setToken] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const history = useHistory();
 
-  async function handleSignUp() {
+  const handleResetPassword = async () => {
     if (password.length >= 6) {
       if (password === confirmPassword) {
         try {
-          const { data } = await api.post("/users", {
-            name,
+          const { data } = await api.post("/reset-password", {
+            token,
             email,
             password,
           });
-
+          console.log(data);
           if (data.success) {
             toast.success(data.success);
             history.push("/signin");
@@ -46,7 +40,7 @@ function SignIn() {
             toast.warn(data.error);
           }
         } catch (error) {
-          toast.error("Não foi possível realizar o cadastro");
+          toast.error("Não foi possível redefinir a senha");
         }
       } else {
         toast.warn("As senhas não coincidem");
@@ -54,34 +48,38 @@ function SignIn() {
     } else {
       toast.warn("A senha deve ter no mínimo 6 caracteres");
     }
-  }
+  };
 
   return (
     <>
-      <GoBack route="/signin" />
+      <GoBack route="/forgot-password" />
       <Container>
         <SidePanel />
         <FormWrapper>
           <Form>
             <Fieldset>
-              <legend>Cadastrar Novo Usuário</legend>
+              <legend>Redefinir Senha</legend>
+              <p>
+                Insira seu Token e escolha uma nova senha para acessar o
+                dashboard do Happet
+              </p>
               <InputBlock>
-                <label htmlFor="name">Nome</label>
+                <label htmlFor="token">Token</label>
                 <input
-                  id="name"
+                  id="token"
                   type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={token}
+                  onChange={(e) => setToken(e.target.value)}
                 />
               </InputBlock>
               <InputBlock>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">E-mail</label>
                 <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                  type="text"
                   id="email"
-                ></input>
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </InputBlock>
               <InputPasswordBlock>
                 <label htmlFor="password">Senha</label>
@@ -135,8 +133,10 @@ function SignIn() {
                   )}
                 </div>
               </InputPasswordBlock>
+              <ConfirmButton onClick={handleResetPassword}>
+                Redefinir Senha
+              </ConfirmButton>
             </Fieldset>
-            <ConfirmButton onClick={handleSignUp}>Cadastrar</ConfirmButton>
           </Form>
         </FormWrapper>
       </Container>
@@ -144,4 +144,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default PasswordReset;

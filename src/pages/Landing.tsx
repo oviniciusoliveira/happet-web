@@ -33,7 +33,7 @@ function Landing() {
         </Location>
         <Link to="/app">
           <Enter>
-            <FiArrowRight size={26} color="rgba(0,0,0,0.6)" />{" "}
+            <FiArrowRight size={26} color="white" />{" "}
           </Enter>
         </Link>
       </Content>

@@ -165,6 +165,7 @@ export const ConfirmButton = styled.button`
     margin-right: 1.6rem;
   }
   :hover {
+    background-color: #3EE08F;
   }
   :active {
     transform: scale(0.9);

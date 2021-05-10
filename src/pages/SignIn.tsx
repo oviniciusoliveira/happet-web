@@ -23,7 +23,7 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoginSaved] = useState(false);
+  const [isLoginSaved, setIsLoginSaved] = useState(false);
   const { signIn, loading } = useAuth();
 
   async function handleLogin() {
@@ -31,6 +31,7 @@ function SignIn() {
 
     if (isLoginSucceded) {
       if (isLoginSaved) {
+        
       }
     }
   }
@@ -81,7 +82,13 @@ function SignIn() {
             </Fieldset>
             <RememberContainer>
               <span>
-                <input type="checkbox" name="remember" id="remember" />
+                <input
+                  id="remember"
+                  name="remember"
+                  type="checkbox"
+                  checked={isLoginSaved}
+                  onChange={(e) => setIsLoginSaved(e.target.checked)}
+                />
                 <label htmlFor="remember">Lembrar-me</label>
               </span>
               <p>

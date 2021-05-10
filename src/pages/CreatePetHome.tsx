@@ -168,7 +168,7 @@ export default function PetHomesMap() {
                   );
                 })}
                 <label htmlFor="image[]" className="new-image">
-                  <FiPlus size={24} color="#15b6d6" />
+                  <FiPlus size={24} color="#ff1a73" />
                 </label>
               </ImagesContainer>
               <input

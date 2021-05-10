@@ -2,12 +2,19 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 1400px;
   min-height: 100vh;
+  background-color: #ff669d;
+  display: flex;
+  
+`;
 
+export const ContentWrapper = styled.div`
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
   padding: 5rem 15rem;
 
-  background-color: #ff669d;
   display: flex;
   justify-content: space-between;
   align-items: center;

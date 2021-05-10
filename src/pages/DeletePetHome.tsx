@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Main, ImageDiv } from "./../styles/pages/deletePetHome";
+import { Container, ContentWrapper, Main, ImageDiv } from "./../styles/pages/deletePetHome";
 import deletePetHomeImage from "./../images/delete-pet-home.svg";
 import api from "../services/api";
 import { useHistory, useParams } from "react-router";
@@ -34,20 +34,24 @@ function DeletePetHome() {
 
   return (
     <Container>
-      <Main>
-        <h1>Excluir!</h1>
-        <p>Você tem certeza que quer excluir {petHome.name}?</p>
-        <div className="buttons">
-          <button onClick={() => history.push("/")}>Voltar para o Mapa</button>
-          <button onClick={handlePetHomeDelete}>
-            <FiTrash />
-            Excluir Pet Home
-          </button>
-        </div>
-      </Main>
-      <ImageDiv>
-        <img src={deletePetHomeImage} alt="Delete Pet Home" />
-      </ImageDiv>
+      <ContentWrapper>
+        <Main>
+          <h1>Excluir!</h1>
+          <p>Você tem certeza que quer excluir {petHome.name}?</p>
+          <div className="buttons">
+            <button onClick={() => history.push("/")}>
+              Voltar para o Mapa
+            </button>
+            <button onClick={handlePetHomeDelete}>
+              <FiTrash />
+              Excluir Pet Home
+            </button>
+          </div>
+        </Main>
+        <ImageDiv>
+          <img src={deletePetHomeImage} alt="Delete Pet Home" />
+        </ImageDiv>
+      </ContentWrapper>
     </Container>
   );
 }
