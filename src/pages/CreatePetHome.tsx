@@ -95,7 +95,7 @@ export default function PetHomesMap() {
     try {
       await api.post("pet-homes", data);
       toast.success("Pet Home criado com Sucesso!");
-      history.push("/app");
+      history.push("/success-pet-home");
     } catch (error) {
       toast.error("Não foi possível criar seu Pet Home, verifique os Campos!");
     }

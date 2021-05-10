@@ -7,6 +7,7 @@ import PetHome from "../pages/PetHome";
 import PetHomeMap from "../pages/PetHomeMap";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import SuccessRegistration from "../pages/SuccessRegistration";
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,8 @@ const AppRoutes = () => {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/forgot-password" component={ForgotPassword} />
         <Route exact path="/password-reset" component={PasswordReset} />
+        <Route exact path="/success-pet-home" component={SuccessRegistration} />
+
       </Switch>
     </BrowserRouter>
   );

@@ -18,7 +18,7 @@
       - [X] Dashboard - Pet Homes Pendentes
       - [X] Dashboard - Editar Pet Home
       - [X] Exclusão de Pet Homes
- - [ ] Lembrar login
+ - [X] Lembrar login
  - [ ] Tema Light/Dark
  - [ ] Animação de carregamento
  - [ ] Notificações ao realizar ações

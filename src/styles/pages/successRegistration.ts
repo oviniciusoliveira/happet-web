@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
-  background-color: #ff669d;
+  background-color: #37C77F;
   display: flex;
   
 `;
@@ -57,7 +57,7 @@ export const Main = styled.main`
       border: none;
       border-radius: 2rem;
 
-      background-color: #d6487b;
+      background-color: #31B272;
 
       cursor: pointer;
 
@@ -66,7 +66,7 @@ export const Main = styled.main`
       transition: all 0.2s ease-in-out;
 
       &:hover {
-        background-color: #ff669d;
+        background-color: #3BD689;
       }
 
       &:active {
