@@ -3,9 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
-  background-color: #ff669d;
   display: flex;
-  
+  background-color: #FF669D;
 `;
 
 export const ContentWrapper = styled.div`
@@ -24,7 +23,7 @@ export const Main = styled.main`
   max-width: 420px;
   text-align: center;
 
-  color: white;
+  color: ${({theme}) => theme.colors.tertiary};
   display: flex;
   flex-direction: column;
 
@@ -66,7 +65,7 @@ export const Main = styled.main`
       transition: all 0.2s ease-in-out;
 
       &:hover {
-        background-color: #ff669d;
+        filter: brightness(1.1);
       }
 
       &:active {

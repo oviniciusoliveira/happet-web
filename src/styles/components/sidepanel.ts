@@ -10,8 +10,8 @@ export const Container = styled.div`
 
   background: linear-gradient(
     330deg,
-    hsla(349, 70%, 78%, 1) 0%,
-    hsla(349, 74%, 82%, 1) 100%
+    ${({theme}) => theme.colors.background} 0%,
+    ${({theme}) => theme.colors.backgroundGradient} 100%
   );
 
   font-size: 2rem;

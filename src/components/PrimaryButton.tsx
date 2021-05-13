@@ -1,15 +1,18 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes } from "react";
 
-import './../styles/components/primaryButton.css';
+import { ButtonStyled } from "./../styles/components/primaryButton";
 
 interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-export default function PrimaryButton({ children, ...props }: PrimaryButtonProps) {
+export default function PrimaryButton({
+  children,
+  ...props
+}: PrimaryButtonProps) {
   return (
-    <button className="primary-button" {...props}>
+    <ButtonStyled className="primary-button" {...props}>
       {children}
-    </button>
+    </ButtonStyled>
   );
 }

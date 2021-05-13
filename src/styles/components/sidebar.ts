@@ -6,8 +6,8 @@ export const Container = styled.aside`
   padding: 3rem 1rem;
   background: linear-gradient(
     330deg,
-    hsla(349, 70%, 78%, 1) 0%,
-    hsla(349, 74%, 82%, 1) 100%
+    ${({theme}) => theme.colors.background} 0%,
+    ${({theme}) => theme.colors.backgroundGradient} 100%
   );
 
   display: flex;
@@ -22,7 +22,7 @@ export const Container = styled.aside`
 
     border: 0;
 
-    background-color: #ff1a73;
+    background-color: ${({theme}) => theme.colors.primary};
     border-radius: 16px;
 
     cursor: pointer;
@@ -34,7 +34,7 @@ export const Container = styled.aside`
     align-items: center;
 
     &:hover {
-        background-color: #4aade5;
+        background-color: ${({theme}) => theme.colors.secundary};
     }
   }
 `;

@@ -3,15 +3,15 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.colors.text};
   border-radius: 2rem;
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: ${({theme}) => theme.colors.tertiary};
 
-    .leaflet-container {
-        border-bottom: 1px solid black;
-        overflow: hidden;
-    }
+  .leaflet-container {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.text};
+    overflow: hidden;
+  }
 `;
 
 export const Footer = styled.footer`
@@ -36,22 +36,21 @@ export const Footer = styled.footer`
       border: 0;
       padding: 1.2rem;
       border-radius: 1rem;
-      background-color: #eeeeee;
+      background-color: ${({ theme }) => theme.colors.backgroundLight};
       cursor: pointer;
       transition: all 0.2 ease-in-out;
 
       svg {
-          color: rgb(255, 26, 115);
+        color: ${({ theme }) => theme.colors.primary};
       }
 
       &:hover {
-          filter: brightness(0.8);
+        filter: brightness(0.8);
       }
-
     }
 
     a + a {
-        margin-left: 1rem;
+      margin-left: 1rem;
     }
   }
 `;

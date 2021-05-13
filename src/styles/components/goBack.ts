@@ -9,7 +9,7 @@ export const Container = styled.div`
   top: 3rem;
   right: 5rem;
 
-  background-color: #ff1a73;
+  background-color: ${({theme}) => theme.colors.primary};
   transition: all 0.2s ease-in-out;
 
   cursor: pointer;
@@ -17,10 +17,10 @@ export const Container = styled.div`
   padding: 1.5rem;
   border-radius: 1.5rem;
 
-  color: white;
+  color: ${({theme}) => theme.colors.tertiary};
 
   &:hover {
-    background-color: #4aade5;
+    background-color: ${({theme}) => theme.colors.secundary};
     transition: all 0.2s ease-in-out;
   }
 `;

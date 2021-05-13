@@ -13,8 +13,8 @@ html {
 }
 
 body {
-    color: #353535;
-    background-color: #f5ebf3;
+    color: ${({theme}) => theme.colors.text};
+    background-color: ${({theme}) => theme.colors.backgroundLight};
 }
 
 body, input, button, textarea {
@@ -34,13 +34,13 @@ a {
 export const InputBlock = styled.div`
   label {
     display: flex;
-    color: #5c8599;
+    color: ${({theme}) => theme.colors.formColor};
     margin-bottom: 0.8rem;
     line-height: 2.4rem;
 
     span {
       font-size: 1.4rem;
-      color: #5c8599;
+      color: ${({theme}) => theme.colors.formColor};
       margin-left: 2.4rem;
       line-height: 2.4rem;
     }
@@ -49,11 +49,11 @@ export const InputBlock = styled.div`
   input,
   textarea {
     width: 100%;
-    background: #f5f8fa;
-    border: 1px solid #d3e2e5;
+    background: ${({theme}) => theme.colors.tertiary};
+    border: 1px solid ${({theme}) => theme.colors.borderFormColor};
     border-radius: 2rem;
     outline: none;
-    color: #5c8599;
+    color: ${({theme}) => theme.colors.formColor};
   }
 
   input {
@@ -72,8 +72,8 @@ export const InputBlock = styled.div`
 
   .new-image {
     height: 96px;
-    background: #f5f8fa;
-    border: 1px dashed rgb(255, 26, 115);
+    background: ${({theme}) => theme.colors.tertiary};
+    border: 1px dashed ${({theme}) => theme.colors.primary};
     border-radius: 20px;
     cursor: pointer;
 
@@ -89,13 +89,13 @@ export const InputBlock = styled.div`
 export const InputPasswordBlock = styled.div`
   label {
     display: flex;
-    color: #5c8599;
+    color: ${({theme}) => theme.colors.formColor};
     margin-bottom: 0.8rem;
     line-height: 2.4rem;
 
     span {
       font-size: 1.4rem;
-      color: #5c8599;
+      color: ${({theme}) => theme.colors.formColor};
       margin-left: 2.4rem;
       line-height: 2.4rem;
     }
@@ -108,11 +108,11 @@ export const InputPasswordBlock = styled.div`
 
   div input {
     width: 100%;
-    background: #f5f8fa;
-    border: 1px solid #d3e2e5;
+    background: ${({theme}) => theme.colors.tertiary};
+    border: 1px solid ${({theme}) => theme.colors.borderFormColor};
     border-radius: 2rem;
     outline: none;
-    color: #5c8599;
+    color: ${({theme}) => theme.colors.formColor};
   }
 
   input {
@@ -138,7 +138,7 @@ export const Form = styled.div`
     align-self: center;
     margin-top: 3rem;
     font-size: 2rem;
-    color: #5c8599;
+    color: ${({theme}) => theme.colors.formColor};
     cursor: pointer;
     transition: all 0.2s;
     &:hover {
@@ -154,7 +154,7 @@ export const ConfirmButton = styled.button`
   border: 0;
   cursor: pointer;
   border-radius: 2rem;
-  color: #ffffff;
+  color: ${({theme}) => theme.colors.tertiary};
   font-weight: 800;
   display: flex;
   justify-content: center;
@@ -176,7 +176,7 @@ export const Fieldset = styled.div`
   legend {
     font-size: 3.2rem;
     line-height: 3.4rem;
-    color: #5c8599;
+    color: ${({theme}) => theme.colors.formColor};
     font-weight: 700;
     margin-bottom: 1.5rem;
     padding-bottom: 2.4rem;

@@ -6,6 +6,5 @@ export const DashboardHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${({theme}) => theme.colors.text};
 `;
-

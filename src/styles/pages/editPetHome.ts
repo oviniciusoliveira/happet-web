@@ -16,9 +16,9 @@ export const AcceptContainer = styled.div`
     cursor: pointer;
     height: 6.4rem;
     border: 0;
-    background-color: #3cdc8c;
+    background-color: ${({theme}) => theme.colors.buttonBackground};
     border-radius: 2rem;
-    color: #ffffff;
+    color: ${({theme}) => theme.colors.tertiary};
     font-weight: 800;
 
     display: flex;
@@ -33,7 +33,7 @@ export const AcceptContainer = styled.div`
     }
 
     &.reject-button {
-      background-color: #ff669d;
+      background-color: ${({theme}) => theme.colors.secundary};
     }
 
     :hover {

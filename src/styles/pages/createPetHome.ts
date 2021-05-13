@@ -21,10 +21,10 @@ export const Fieldset = styled.fieldset`
 
     font-size: 3.2rem;
     line-height: 3.4rem;
-    color: #5c8599;
+    color: ${({ theme }) => theme.colors.formColor};
     font-weight: 700;
 
-    border-bottom: 1px solid #d3e2e5;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.borderFormColor};
     margin-bottom: 4rem;
     padding-bottom: 2.4rem;
   }
@@ -34,8 +34,8 @@ export const Form = styled.form`
   width: 70rem;
   margin: 6.4rem auto;
 
-  background: #ffffff;
-  border: 1px solid #d3e2e5;
+  background: ${({ theme }) => theme.colors.tertiary};
+  border: 1px solid ${({ theme }) => theme.colors.borderFormColor};
   border-radius: 2rem;
 
   padding: 6.4rem 8rem;
@@ -44,7 +44,7 @@ export const Form = styled.form`
 
   .leaflet-container {
     margin-bottom: 4rem;
-    border: 1px solid #d3e2e5;
+    border: 1px solid ${({ theme }) => theme.colors.borderFormColor};
     border-radius: 2rem;
   }
 
@@ -62,16 +62,16 @@ export const ButtonSelect = styled.div`
 
   button {
     height: 6.4rem;
-    background: #f5f8fa;
-    border: 1px solid #d3e2e5;
-    color: #5c8599;
+    background: ${({theme}) => theme.colors.tertiary};
+    border: 1px solid ${({theme}) => theme.colors.borderFormColor};
+    color: ${({theme}) => theme.colors.formColor};
     cursor: pointer;
   }
 
   button.active {
-    background: #edfff6;
-    border: 1px solid #a1e9c5;
-    color: #37c77f;
+    background: ${({theme}) => theme.colors.secundary};
+    border: 1px solid ${({theme}) => theme.colors.borderFormColor};
+    color: ${({theme}) => theme.colors.tertiary};
   }
 
   button:first-child {
@@ -106,7 +106,7 @@ export const ImagePreview = styled.div`
     position: absolute;
     top: 0px;
     right: 0px;
-    background-color: #fff;
+    background-color: ${({theme}) => theme.colors.tertiary};
     padding: 10px;
     padding-bottom: 5px;
     border-top-right-radius: 11px;
@@ -115,14 +115,14 @@ export const ImagePreview = styled.div`
     cursor: pointer;
     transition: all 0.2s;
 
-    color: #ff1a73;
+    color: ${({theme}) => theme.colors.primary};
     cursor: pointer;
 
     &:hover {
-      background-color: #ddd;
+      background-color: ${({theme}) => theme.colors.backgroundLight};
     }
   }
   svg {
-    color: #ff1a73;
+    color: ${({theme}) => theme.colors.primary};
   }
 `;

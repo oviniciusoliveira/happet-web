@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const Container = styled.aside`
   background: linear-gradient(
     330deg,
-    hsla(349, 70%, 78%, 1) 0%,
-    hsla(349, 74%, 82%, 1) 100%
+    ${({ theme }) => theme.colors.background} 0%,
+    ${({ theme }) => theme.colors.backgroundGradient} 100%
   );
 
-    position: fixed;
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -34,24 +34,23 @@ export const Container = styled.aside`
 
     cursor: pointer;
 
-    background-color: #ff1a73;
+    background-color: ${({theme}) => theme.colors.primary};
     transition: all 0.2s ease-in-out;
 
     &.active {
-      background-color: #4aade5;
+      background-color: ${({theme}) => theme.colors.secundary};
 
       svg {
-        color: #FFFFFF;
+        color: ${({theme}) => theme.colors.tertiary};
       }
     }
 
     &:hover {
-      background-color: #4aade5;
+      background-color: ${({theme}) => theme.colors.secundary};
       svg {
-        color: #FFFFFF;
+        color: ${({theme}) => theme.colors.tertiary};
       }
     }
-
   }
 `;
 
@@ -60,7 +59,7 @@ export const Nav = styled.nav`
   flex-direction: column;
 
   button + button {
-      margin-top: 1.6rem;
+    margin-top: 1.6rem;
   }
 `;
 

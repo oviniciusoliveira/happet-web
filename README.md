@@ -17,11 +17,12 @@
       - [X] Dashboard - Pet Homes Cadastrados
       - [X] Dashboard - Pet Homes Pendentes
       - [X] Dashboard - Editar Pet Home
-      - [X] Exclusão de Pet Homes
+      - [X] Dashboard - Exclusão de Pet Homes
  - [X] Lembrar login
- - [ ] Tema Light/Dark
+ - [ ] Temas: Light e Dark utilizando persistência de estado
  - [ ] Animação de carregamento
  - [ ] Notificações ao realizar ações
  - [ ] Localização atual do usuário
+ - [ ] Responsivo para Mobile
 
 ---

@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-// import { FaWhatsapp } from "react-icons/fa";
 import { FiClock, FiInfo } from "react-icons/fi";
-// import { Marker, TileLayer } from "react-leaflet";
+import { FaWhatsapp } from "react-icons/fa";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
-// import L from "leaflet";
+
+import PrimaryButton from "./../components/PrimaryButton";
 
 import mapIcon from "./../utils/mapIcon";
 
-// import PrimaryButton from "../../components/PrimaryButton";
 import Sidebar from "../components/Sidebar";
 import api from "../services/api";
-// import Map from "../../components/Map";
 
 import {
   Container,
@@ -31,6 +29,7 @@ export interface PetHomeInterface {
   instructions: string;
   opening_hours: string;
   open_on_weekends: string;
+  whatsapp: string;
   images: Array<{
     id: string;
     url: string;
@@ -143,10 +142,15 @@ export default function PetHome() {
               )}
             </OpenDetails>
 
-            {/* <PrimaryButton type="button">
-              <FaWhatsapp size={20} color="#FFF" />
-              Entrar em contato
-            </PrimaryButton> */}
+            <a
+              target="blank"
+              href={`https://api.WhatsApp.com/send?phone=${petHome.whatsapp}`}
+            >
+              <PrimaryButton type="button">
+                <FaWhatsapp size={20} color="#FFF" />
+                Entrar em contato
+              </PrimaryButton>
+            </a>
           </DetailsContent>
         </Details>
       </main>

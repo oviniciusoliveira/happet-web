@@ -1,3 +1,8 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+
+import { ThemeContext } from "styled-components";
+
 import {
   Container,
   Content,
@@ -8,11 +13,19 @@ import {
 } from "./../styles/pages/landing";
 import { Logo, LogoImg } from "./../styles/components/logo";
 
+import Switch from "react-switch";
 import { FiArrowRight } from "react-icons/fi";
+import { shade } from "polished";
+
 import logoImg from "./../images/logo.png";
 
-import { Link } from "react-router-dom";
-function Landing() {
+interface LandingProps {
+  toggleTheme(): void;
+}
+
+function Landing({ toggleTheme }: LandingProps) {
+  const { colors, title } = useContext(ThemeContext);
+
   return (
     <Container>
       <Content>
@@ -28,6 +41,17 @@ function Landing() {
           </Link>
         </Main>
         <Location>
+          <Switch
+            onChange={toggleTheme}
+            checked={title === "dark"}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={20}
+            handleDiameter={25}
+            width={50}
+            onColor={shade(0.2, colors.secundary)}
+            offColor={colors.primary}
+          />
           <strong>Liberdade</strong>
           <span>São Paulo</span>
         </Location>

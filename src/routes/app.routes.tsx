@@ -9,11 +9,17 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import SuccessRegistration from "../pages/SuccessRegistration";
 
-const AppRoutes = () => {
+import { RoutesProps } from "./index";
+
+const AppRoutes = ({ toggleTheme }: RoutesProps) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Landing} />
+        <Route
+          path="/"
+          exact
+          component={() => <Landing toggleTheme={toggleTheme} />}
+        />
         <Route path="/app" component={PetHomeMap} />
         <Route path="/petHomes/create" component={CreatePetHome} />
         <Route path="/petHomes/:id" component={PetHome} />
@@ -22,7 +28,6 @@ const AppRoutes = () => {
         <Route exact path="/forgot-password" component={ForgotPassword} />
         <Route exact path="/password-reset" component={PasswordReset} />
         <Route exact path="/success-pet-home" component={SuccessRegistration} />
-
       </Switch>
     </BrowserRouter>
   );
