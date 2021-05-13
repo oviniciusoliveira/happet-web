@@ -62,7 +62,7 @@ export const ButtonSelect = styled.div`
 
   button {
     height: 6.4rem;
-    background: ${({theme}) => theme.colors.tertiary};
+    background: ${({theme}) => theme.colors.white};
     border: 1px solid ${({theme}) => theme.colors.borderFormColor};
     color: ${({theme}) => theme.colors.formColor};
     cursor: pointer;
@@ -71,7 +71,7 @@ export const ButtonSelect = styled.div`
   button.active {
     background: ${({theme}) => theme.colors.secundary};
     border: 1px solid ${({theme}) => theme.colors.borderFormColor};
-    color: ${({theme}) => theme.colors.tertiary};
+    color: ${({theme}) => theme.colors.white};
   }
 
   button:first-child {
@@ -106,7 +106,7 @@ export const ImagePreview = styled.div`
     position: absolute;
     top: 0px;
     right: 0px;
-    background-color: ${({theme}) => theme.colors.tertiary};
+    background-color: ${({theme}) => theme.colors.white};
     padding: 10px;
     padding-bottom: 5px;
     border-top-right-radius: 11px;

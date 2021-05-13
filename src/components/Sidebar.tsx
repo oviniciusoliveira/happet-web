@@ -1,7 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
-import logoImg from "./../images/logo.png";
 import { Logo, LogoImg } from "../styles/components/logo";
 import { Container } from "./../styles/components/sidebar";
 
@@ -11,7 +10,7 @@ function Sidebar() {
   return (
     <Container>
       <Logo>
-        <LogoImg src={logoImg} alt="Happet" />
+        <LogoImg />
       </Logo>
       <footer>
         <button type="button" onClick={goBack}>

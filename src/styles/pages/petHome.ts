@@ -13,8 +13,8 @@ export const Details = styled.div`
   width: 70rem;
   margin: 6.4rem auto;
 
-  background: #ffffff;
-  border: 1px solid #d3e2e5;
+  background: ${({ theme }) => theme.colors.tertiary};
+  border: 1px solid ${({ theme }) => theme.colors.borderFormColor};
   border-radius: 2rem;
 
   overflow: hidden;
@@ -59,7 +59,7 @@ export const DetailsContent = styled.div`
   padding: 8rem;
 
   h1 {
-    color: #4d6f80;
+    color: ${({ theme }) => theme.colors.formColor};
     font-size: 5.4rem;
     line-height: 5.4rem;
     margin-bottom: 0.8rem;
@@ -67,20 +67,20 @@ export const DetailsContent = styled.div`
 
   p {
     line-height: 2.8rem;
-    color: #5c8599;
+    color: ${({ theme }) => theme.colors.formColor};
     margin-top: 2.4rem;
   }
 
   .leaflet-container {
-    border-bottom: 1px solid #dde3f0;
-    border-radius: 20px;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.borderFormColor};
   }
 
   .map-container {
     margin-top: 6.4rem;
-    background: #e6f7fb;
-    border: 1px solid #b3dae2;
+    background-color: ${({ theme }) => theme.colors.secundaryLight};
+    border: 1px solid ${({ theme }) => theme.colors.borderFormColor};
     border-radius: 2rem;
+    overflow: hidden;
 
     footer {
       padding: 2rem 0;
@@ -88,7 +88,7 @@ export const DetailsContent = styled.div`
 
       a {
         line-height: 2.4rem;
-        color: #0089a5;
+        color: ${({ theme }) => theme.colors.formColor};
         text-decoration: none;
       }
     }
@@ -98,14 +98,14 @@ export const DetailsContent = styled.div`
     width: 100%;
     height: 1px;
     border: 0;
-    background: #d3e2e6;
+    background: ${({ theme }) => theme.colors.borderFormColor};
     margin: 6.4rem 0;
   }
 
   h2 {
     font-size: 3.6rem;
     line-height: 4.6rem;
-    color: #4d6f80;
+    color: ${({ theme }) => theme.colors.formColor};
   }
 `;
 
@@ -126,20 +126,28 @@ export const OpenDetails = styled.div`
   }
 
   div.hour {
-    background: linear-gradient(149.97deg, #e6f7fb 8.13%, #ffffff 92.67%);
-    border: 1px solid #b3dae2;
-    color: #5c8599;
+    background: linear-gradient(
+      149.97deg,
+      ${({theme}) => theme.colors.secundaryLight} 90.85%,
+      ${({ theme }) => theme.colors.white} 100%
+    );
+    border: 1px solid ${({theme}) => theme.colors.secundary};
+    color: ${({theme}) => theme.colors.formColor};
   }
 
   div.open-on-weekends {
-    background: linear-gradient(154.16deg, #edfff6 7.85%, #ffffff 91.03%);
-    border: 1px solid #a1e9c5;
-    color: #37c77f;
+    background: linear-gradient(
+      154.16deg,
+      ${({theme}) => theme.colors.buttonBackgroundLight} 90.85%,
+      ${({ theme }) => theme.colors.white} 100%
+    );
+    border: 1px solid ${({theme}) => theme.colors.buttonHoverBackground};
+    color: ${({theme}) => theme.colors.buttonBackground};
   }
 
   div.open-on-weekends.dont-open {
-    background: linear-gradient(154.16deg, #fdf0f5 7.85%, #ffffff 91.03%);
-    border: 1px solid #ffbcd4;
-    color: #ff669d;
+    background: linear-gradient(154.16deg, ${({theme}) => theme.colors.pinkLight} 90.85%, ${({theme}) => theme.colors.white} 100%);
+    border: 1px solid ${({theme}) => theme.colors.primary};
+    color: ${({theme}) => theme.colors.primary};
   }
 `;

@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FiPlus, FiArrowRight, FiArrowLeft } from "react-icons/fi";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
+import { ThemeContext } from "styled-components";
 
 import {
   Container,
@@ -14,7 +16,8 @@ import {
 
 import "leaflet/dist/leaflet.css";
 
-import mapIcon from "./../utils/mapIcon";
+import { mapIconLight, mapIconDark } from "./../utils/mapIcon";
+import { LogoImg } from "./../styles/components/logo";
 import api from "../services/api";
 import LogoComTexto from "../components/LogoComTexto";
 
@@ -28,7 +31,8 @@ interface PetHome {
 function PetHomeMap() {
   const [petHomes, setPetHomes] = useState<PetHome[]>([]);
   const [acceptedPetHomes, setAcceptedPetHomes] = useState<PetHome[]>([]);
-  const history = useHistory();
+  const { title } = useContext(ThemeContext);
+  const history = useHistory(); 
 
   useEffect(() => {
     api.get("pet-homes").then((response) => {
@@ -44,9 +48,6 @@ function PetHomeMap() {
       <Aside>
         <Header>
           <LogoComTexto />
-          {/* <Logo>
-            <LogoImg src={logoImg} className="logoImg" alt="Happet" />
-          </Logo> */}
           <h2>Identifique um Pet Home no mapa</h2>
           <p>Muitos animais estão esperando por um novo dono</p>
         </Header>
@@ -64,14 +65,14 @@ function PetHomeMap() {
         style={{ width: "100%", height: "100%" }}
       >
         <TileLayer
-          url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+          url={`https://api.mapbox.com/styles/v1/mapbox/${title}-v10/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
         />
 
         {acceptedPetHomes.map((petHome) => {
           return (
             <Marker
               key={petHome.id}
-              icon={mapIcon}
+              icon={title === "light" ? mapIconLight : mapIconDark}
               position={[petHome.latitude, petHome.longitude]}
             >
               <Popup

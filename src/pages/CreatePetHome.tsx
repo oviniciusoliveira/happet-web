@@ -1,10 +1,10 @@
-import React, { useState, FormEvent, ChangeEvent } from "react";
+import React, { useState, FormEvent, ChangeEvent, useContext } from "react";
 
 import Sidebar from "./../components/Sidebar";
 
 import { FiPlus } from "react-icons/fi";
 import { ImCross } from "react-icons/im";
-import mapIcon from "./../utils/mapIcon";
+import { mapIconLight, mapIconDark } from "./../utils/mapIcon";
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import PrimaryButton from "./../components/PrimaryButton";
 import api from "../services/api";
@@ -21,6 +21,7 @@ import {
   ImagesContainer,
   ImagePreview,
 } from "./../styles/pages/createPetHome";
+import { ThemeContext } from "styled-components";
 
 interface Image {
   url: string;
@@ -38,6 +39,7 @@ export default function PetHomesMap() {
   const [whatsapp, setWhatsapp] = useState("");
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<Image[]>([]);
+  const { title } = useContext(ThemeContext);
 
   function MyComponent() {
     useMapEvents({
@@ -116,13 +118,13 @@ export default function PetHomesMap() {
             >
               <MyComponent />
               <TileLayer
-                url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+                url={`https://api.mapbox.com/styles/v1/mapbox/${title}-v10/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
               />
 
               {position.latitude !== 0 && (
                 <Marker
                   interactive={false}
-                  icon={mapIcon}
+                  icon={title === "light" ? mapIconLight : mapIconDark}
                   position={[position.latitude, position.longitude]}
                 />
               )}
@@ -168,7 +170,10 @@ export default function PetHomesMap() {
                   );
                 })}
                 <label htmlFor="image[]" className="new-image">
-                  <FiPlus size={24} color="#ff1a73" />
+                  <FiPlus
+                    size={24}
+                    color={`${({ theme }: any) => theme.colors.primary}`}
+                  />
                 </label>
               </ImagesContainer>
               <input

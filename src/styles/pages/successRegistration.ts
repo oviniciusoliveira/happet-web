@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
-  background-color: #37C77F;
+  background-color: ${({theme}) => theme.colors.green};
   display: flex;
   
 `;
@@ -24,7 +24,7 @@ export const Main = styled.main`
   max-width: 420px;
   text-align: center;
 
-  color: white;
+  color: ${({theme}) => theme.colors.white};
   display: flex;
   flex-direction: column;
 
@@ -57,7 +57,7 @@ export const Main = styled.main`
       border: none;
       border-radius: 2rem;
 
-      background-color: #31B272;
+      background-color: ${({theme}) => theme.colors.greenDark};
 
       cursor: pointer;
 
@@ -66,7 +66,7 @@ export const Main = styled.main`
       transition: all 0.2s ease-in-out;
 
       &:hover {
-        background-color: #3BD689;
+      background-color: ${({theme}) => theme.colors.greenMedium};
       }
 
       &:active {

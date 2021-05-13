@@ -5,7 +5,7 @@ import {
 } from "./../styles/components/dashboardSidebar";
 
 import { FiMapPin, FiInfo, FiPower } from "react-icons/fi";
-import logoImg from "./../images/logo.png";
+import { Logo, LogoImg } from "../styles/components/logo";
 
 import { useAuth } from "./../contexts/auth";
 import { useDashboard } from "./../contexts/dashboard";
@@ -32,7 +32,9 @@ function DashboardSidebar() {
 
   return (
     <Container>
-      <img src={logoImg} alt="Happet" />
+      <Logo>
+        <LogoImg />
+      </Logo>
       <Nav>
         <button type="button" onClick={(e) => {
           handlePage("accepted-pet-homes")

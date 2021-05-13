@@ -7,8 +7,8 @@ export const Container = styled.div`
   height: 100vh;
   background: linear-gradient(
     330deg,
-    hsla(349, 70%, 78%, 1) 0%,
-    hsla(349, 74%, 82%, 1) 100%
+    ${({theme}) => theme.colors.background} 0%,
+    ${({theme}) => theme.colors.backgroundGradient} 100%
   );
   display: flex;
   justify-content: center;
@@ -82,10 +82,10 @@ export const RegisterButton = styled.div`
   bottom: 0;
   left: 0;
   padding: 2rem 6rem;
-  background: #ff1a73;
+  background: ${({theme}) => theme.colors.primary};
   border-radius: 3rem;
 
-  color: #fff;
+  color: ${({theme}) => theme.colors.white};
   font-size: 2.5rem;
   font-weight: 700;
 
@@ -98,7 +98,7 @@ export const RegisterButton = styled.div`
 
   &:hover {
     transition: background-color 0.2s;
-    background-color: #4aade5;
+    background-color: ${({theme}) => theme.colors.secundary};
   }
 `;
 
@@ -109,7 +109,7 @@ export const Enter = styled.div`
 
   width: 8rem;
   height: 8rem;
-  background: #ff1a73;
+  background: ${({theme}) => theme.colors.primary};
   border-radius: 3rem;
 
   display: flex;
@@ -120,7 +120,7 @@ export const Enter = styled.div`
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: #4aade5;
+    background-color: ${({theme}) => theme.colors.secundary};
     transition: background-color 0.2s;
   }
 `;

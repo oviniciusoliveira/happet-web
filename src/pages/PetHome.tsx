@@ -5,7 +5,7 @@ import { MapContainer, Marker, TileLayer } from "react-leaflet";
 
 import PrimaryButton from "./../components/PrimaryButton";
 
-import mapIcon from "./../utils/mapIcon";
+import { mapIconLight, mapIconDark } from "./../utils/mapIcon";
 
 import Sidebar from "../components/Sidebar";
 import api from "../services/api";
@@ -20,6 +20,8 @@ import {
 } from "./../styles/pages/petHome";
 
 import { useParams } from "react-router-dom";
+import { ThemeContext } from "styled-components";
+import { useContext } from "react";
 
 export interface PetHomeInterface {
   latitude: number;
@@ -41,6 +43,7 @@ export interface PetHomeParams {
 }
 
 export default function PetHome() {
+  const { title } = useContext(ThemeContext);
   const [petHome, setPetHome] = useState<PetHomeInterface>();
   const params = useParams<PetHomeParams>();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -96,11 +99,11 @@ export default function PetHome() {
                 doubleClickZoom={false}
               >
                 <TileLayer
-                  url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+                  url={`https://api.mapbox.com/styles/v1/mapbox/${title}-v10/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
                 />
                 <Marker
                   interactive={false}
-                  icon={mapIcon}
+                  icon={title === "light" ? mapIconLight : mapIconDark}
                   position={[petHome.latitude, petHome.longitude]}
                 />
               </MapContainer>

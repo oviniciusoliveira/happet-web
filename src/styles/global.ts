@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 export default createGlobalStyle`
     * {
@@ -13,8 +13,8 @@ html {
 }
 
 body {
-    color: ${({theme}) => theme.colors.text};
-    background-color: ${({theme}) => theme.colors.backgroundLight};
+    color: ${({ theme }) => theme.colors.text};
+    background-color: ${({ theme }) => theme.colors.backgroundLight};
 }
 
 body, input, button, textarea {
@@ -32,15 +32,16 @@ a {
 `;
 
 export const InputBlock = styled.div`
+  margin-top: 1rem;
   label {
     display: flex;
-    color: ${({theme}) => theme.colors.formColor};
+    color: ${({ theme }) => theme.colors.formColor};
     margin-bottom: 0.8rem;
     line-height: 2.4rem;
 
     span {
       font-size: 1.4rem;
-      color: ${({theme}) => theme.colors.formColor};
+      color: ${({ theme }) => theme.colors.formColor};
       margin-left: 2.4rem;
       line-height: 2.4rem;
     }
@@ -49,17 +50,16 @@ export const InputBlock = styled.div`
   input,
   textarea {
     width: 100%;
-    background: ${({theme}) => theme.colors.tertiary};
-    border: 1px solid ${({theme}) => theme.colors.borderFormColor};
+    background: ${({ theme }) => theme.colors.tertiaryLight};
+    border: 1px solid ${({ theme }) => theme.colors.borderFormColor};
     border-radius: 2rem;
     outline: none;
-    color: ${({theme}) => theme.colors.formColor};
+    color: ${({ theme }) => theme.colors.inputColor};
   }
 
   input {
     height: 6.4rem;
     padding: 0 1.6rem;
-    margin-bottom: 1rem;
   }
 
   textarea {
@@ -72,8 +72,8 @@ export const InputBlock = styled.div`
 
   .new-image {
     height: 96px;
-    background: ${({theme}) => theme.colors.tertiary};
-    border: 1px dashed ${({theme}) => theme.colors.primary};
+    background: ${({ theme }) => theme.colors.tertiaryLight};
+    border: 1px dashed ${({ theme }) => theme.colors.primary};
     border-radius: 20px;
     cursor: pointer;
 
@@ -87,15 +87,16 @@ export const InputBlock = styled.div`
 `;
 
 export const InputPasswordBlock = styled.div`
+margin-top: 2rem;
   label {
     display: flex;
-    color: ${({theme}) => theme.colors.formColor};
+    color: ${({ theme }) => theme.colors.formColor};
     margin-bottom: 0.8rem;
     line-height: 2.4rem;
 
     span {
       font-size: 1.4rem;
-      color: ${({theme}) => theme.colors.formColor};
+      color: ${({ theme }) => theme.colors.formColor};
       margin-left: 2.4rem;
       line-height: 2.4rem;
     }
@@ -108,11 +109,11 @@ export const InputPasswordBlock = styled.div`
 
   div input {
     width: 100%;
-    background: ${({theme}) => theme.colors.tertiary};
-    border: 1px solid ${({theme}) => theme.colors.borderFormColor};
+    background: ${({ theme }) => theme.colors.tertiaryLight};
+    border: 1px solid ${({ theme }) => theme.colors.borderFormColor};
     border-radius: 2rem;
     outline: none;
-    color: ${({theme}) => theme.colors.formColor};
+    color: ${({ theme }) => theme.colors.inputColor};
   }
 
   input {
@@ -125,6 +126,7 @@ export const InputPasswordBlock = styled.div`
     top: 33%;
     right: 2rem;
     cursor: pointer;
+    color: ${({theme}) => theme.colors.primary}
   }
 `;
 
@@ -133,12 +135,13 @@ export const Form = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   strong.register {
     display: flex;
     align-self: center;
     margin-top: 3rem;
     font-size: 2rem;
-    color: ${({theme}) => theme.colors.formColor};
+    color: ${({ theme }) => theme.colors.formColor};
     cursor: pointer;
     transition: all 0.2s;
     &:hover {
@@ -154,7 +157,7 @@ export const ConfirmButton = styled.button`
   border: 0;
   cursor: pointer;
   border-radius: 2rem;
-  color: ${({theme}) => theme.colors.tertiary};
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 800;
   display: flex;
   justify-content: center;
@@ -165,7 +168,7 @@ export const ConfirmButton = styled.button`
     margin-right: 1.6rem;
   }
   :hover {
-    background-color: #3EE08F;
+    background-color: #3ee08f;
   }
   :active {
     transform: scale(0.9);
@@ -176,7 +179,7 @@ export const Fieldset = styled.div`
   legend {
     font-size: 3.2rem;
     line-height: 3.4rem;
-    color: ${({theme}) => theme.colors.formColor};
+    color: ${({ theme }) => theme.colors.formColor};
     font-weight: 700;
     margin-bottom: 1.5rem;
     padding-bottom: 2.4rem;

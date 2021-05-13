@@ -1,12 +1,15 @@
 import { Container, Footer } from "./../styles/components/petHomeItem";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
-import mapIcon from "./../utils/mapIcon";
+import { mapIconLight, mapIconDark } from "./../utils/mapIcon";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiEdit3, FiTrash } from "react-icons/fi";
+import { ThemeContext } from "styled-components";
+import { useContext } from "react";
 
 function PetHomeItem({ petHome }: any) {
   const history = useHistory();
+  const { title } = useContext(ThemeContext);
 
   return (
     <Container className="map-container">
@@ -21,11 +24,11 @@ function PetHomeItem({ petHome }: any) {
         doubleClickZoom={false}
       >
         <TileLayer
-          url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+          url={`https://api.mapbox.com/styles/v1/mapbox/${title}-v10/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
         />
         <Marker
           interactive={false}
-          icon={mapIcon}
+          icon={title === "light" ? mapIconLight : mapIconDark}
           position={[petHome.latitude, petHome.longitude]}
         />
       </MapContainer>

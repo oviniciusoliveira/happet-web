@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
   display: flex;
-  background-color: #FF669D;
+  background-color: ${({theme}) => theme.colors.pinkMedium};
 `;
 
 export const ContentWrapper = styled.div`
@@ -23,7 +23,7 @@ export const Main = styled.main`
   max-width: 420px;
   text-align: center;
 
-  color: ${({theme}) => theme.colors.tertiary};
+  color: ${({theme}) => theme.colors.white};
   display: flex;
   flex-direction: column;
 
@@ -56,7 +56,7 @@ export const Main = styled.main`
       border: none;
       border-radius: 2rem;
 
-      background-color: #d6487b;
+      background-color: ${({theme}) => theme.colors.pinkDark};
 
       cursor: pointer;
 

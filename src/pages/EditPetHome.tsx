@@ -1,10 +1,10 @@
-import { useState, FormEvent, ChangeEvent, useEffect } from "react";
+import { useState, FormEvent, ChangeEvent, useEffect, useContext } from "react";
 
 import Sidebar from "./../components/Sidebar";
 
 import { FiPlus, FiCheck } from "react-icons/fi";
 import { ImCross, ImCancelCircle } from "react-icons/im";
-import mapIcon from "./../utils/mapIcon";
+import { mapIconLight, mapIconDark } from "./../utils/mapIcon";
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import PrimaryButton from "./../components/PrimaryButton";
 import api from "../services/api";
@@ -26,6 +26,7 @@ import {
 } from "./../styles/pages/createPetHome";
 
 import { AcceptContainer } from "./../styles/pages/editPetHome";
+import { ThemeContext } from "styled-components";
 
 interface Image {
   url: string;
@@ -48,6 +49,7 @@ export default function EditPetHome() {
   const [is_accepted, setIsAccepted] = useState(false);
   const [removeImage, setRemoveImage] = useState<any>([]);
   const { setPage } = useDashboard();
+  const { title } = useContext(ThemeContext);
 
   useEffect(() => {
     async function loadPetHome() {
@@ -73,7 +75,7 @@ export default function EditPetHome() {
       const response = await api.delete(`/pet-homes/${params.id}`);
       toast.success(response);
       history.push("/pending-pet-homes");
-      setPage("pending-pet-homes")
+      setPage("pending-pet-homes");
     } catch (error) {
       toast.error("Erro ao Rejeitar o Pedido!");
     }
@@ -137,12 +139,11 @@ export default function EditPetHome() {
       removeImage.forEach((image: any) => {
         data.append("id_images_remove", image.id);
       });
-      
 
       await api.put("pet-homes", data);
       toast.success("Pet Home Cadastrado");
       history.push("/accepted-pet-homes");
-      setPage("accepted-pet-homes")
+      setPage("accepted-pet-homes");
     } catch (error) {
       toast.error("Não foi possível cadastrar o Pet Home!");
     }
@@ -163,13 +164,13 @@ export default function EditPetHome() {
               >
                 <MapClickComponent />
                 <TileLayer
-                  url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+                  url={`https://api.mapbox.com/styles/v1/mapbox/${title}-v10/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
                 />
 
                 {position.latitude !== 0 && position.longitude && (
                   <Marker
                     interactive={false}
-                    icon={mapIcon}
+                    icon={title === "light" ? mapIconLight : mapIconDark}
                     position={[position.latitude, position.longitude]}
                   />
                 )}
@@ -216,7 +217,10 @@ export default function EditPetHome() {
                   );
                 })}
                 <label htmlFor="image[]" className="new-image">
-                  <FiPlus size={24} color="rgb(255, 26, 115)" />
+                  <FiPlus
+                    size={24}
+                    color={`${({ theme }: any) => theme.colors.primary}`}
+                  />
                 </label>
               </ImagesContainer>
               <input

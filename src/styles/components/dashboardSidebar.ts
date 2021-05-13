@@ -41,14 +41,14 @@ export const Container = styled.aside`
       background-color: ${({theme}) => theme.colors.secundary};
 
       svg {
-        color: ${({theme}) => theme.colors.tertiary};
+        color: ${({theme}) => theme.colors.white};
       }
     }
 
     &:hover {
       background-color: ${({theme}) => theme.colors.secundary};
       svg {
-        color: ${({theme}) => theme.colors.tertiary};
+        color: ${({theme}) => theme.colors.white};
       }
     }
   }

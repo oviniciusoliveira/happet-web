@@ -13,12 +13,12 @@ export const Container = styled.div`
   }
 
   .leaflet-popup-content-wrapper {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     box-shadow: none;
   }
 
   .leaflet-popup-content {
-    color: hsla(349, 70%, 78%, 1);
+    color: ${({ theme }) => theme.colors.primary};
     font-size: 20px;
     font-weight: bold;
     margin: 8px 12px;
@@ -33,8 +33,7 @@ export const Container = styled.div`
   .leaflet-popup-content a {
     width: 40px;
     height: 40px;
-    background: hsla(349, 70%, 78%, 1);
-    box-shadow: 17.2868px 27.6589px 41.4884px rgba(24, 142, 166, 0.16);
+    background: ${({ theme }) => theme.colors.primary};
     border-radius: 12px;
 
     display: flex;
@@ -51,8 +50,8 @@ export const Aside = styled.aside`
   width: 44rem;
   background: linear-gradient(
     330deg,
-    hsla(349, 70%, 78%, 1) 0%,
-    hsla(349, 74%, 82%, 1) 100%
+    ${({ theme }) => theme.colors.background} 0%,
+    ${({ theme }) => theme.colors.backgroundGradient} 100%
   );
   padding: 4rem 4rem 2rem 4rem;
 
@@ -68,10 +67,10 @@ export const Aside = styled.aside`
     border: 0;
     padding: 1.5rem;
     border-radius: 15px;
-    background-color: #ff1a73;
+    background-color: ${({ theme }) => theme.colors.primary};
     cursor: pointer;
     &:hover {
-      background-color: #4aade5;
+      background-color: ${({ theme }) => theme.colors.secundary};
     }
   }
 `;
@@ -108,7 +107,7 @@ export const CreatePetHome = styled(Link)`
 
   width: 6.4rem;
   height: 6.4rem;
-  background-color: #ff1a73;
+  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 2rem;
 
   display: flex;
@@ -121,6 +120,6 @@ export const CreatePetHome = styled(Link)`
 
   &:hover {
     transition: background-color 0.2s;
-    background-color: #4aade5;
+    background-color: ${({ theme }) => theme.colors.secundary};
   }
 `;

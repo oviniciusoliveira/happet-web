@@ -8,7 +8,7 @@ export const ButtonStyled = styled.button`
   cursor: pointer;
   background: ${({ theme }) => theme.colors.buttonBackground};
   border-radius: 20px;
-  color: ${({ theme }) => theme.colors.tertiary};
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 800;
   display: flex;
   justify-content: center;

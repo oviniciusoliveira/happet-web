@@ -11,7 +11,7 @@ export const RememberContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   margin-top: 3rem;
-  color: #5c8599;
+  color: ${({theme}) => theme.colors.formColor};
   span {
     display: flex;
     flex-direction: row;

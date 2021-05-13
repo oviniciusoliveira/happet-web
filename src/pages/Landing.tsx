@@ -11,13 +11,12 @@ import {
   Enter,
   RegisterButton,
 } from "./../styles/pages/landing";
-import { Logo, LogoImg } from "./../styles/components/logo";
+import { Logo } from "./../styles/components/logo";
+import LogoHappet from "./../images/logo";
 
 import Switch from "react-switch";
 import { FiArrowRight } from "react-icons/fi";
 import { shade } from "polished";
-
-import logoImg from "./../images/logo.png";
 
 interface LandingProps {
   toggleTheme(): void;
@@ -30,7 +29,7 @@ function Landing({ toggleTheme }: LandingProps) {
     <Container>
       <Content>
         <Logo>
-          <LogoImg src={logoImg} className="logoImg" alt="Happet" />
+          <LogoHappet />
           <strong>Happet</strong>
         </Logo>
         <Main>
@@ -57,7 +56,7 @@ function Landing({ toggleTheme }: LandingProps) {
         </Location>
         <Link to="/app">
           <Enter>
-            <FiArrowRight size={26} color="white" />{" "}
+            <FiArrowRight size={26} color="white" />
           </Enter>
         </Link>
       </Content>

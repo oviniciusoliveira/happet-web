@@ -17,7 +17,7 @@ export const Container = styled.div`
   padding: 1.5rem;
   border-radius: 1.5rem;
 
-  color: ${({theme}) => theme.colors.tertiary};
+  color: ${({theme}) => theme.colors.white};
 
   &:hover {
     background-color: ${({theme}) => theme.colors.secundary};

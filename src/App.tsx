@@ -21,8 +21,9 @@ function App() {
       <AuthProvider>
         <DashboardProvider>
           <ThemeProvider theme={theme}>
+            {console.log(theme)}
             <GlobalStyle />
-            <ToastContainer />
+            <ToastContainer autoClose={3000} />
             <Routes toggleTheme={toggleTheme} />
           </ThemeProvider>
         </DashboardProvider>

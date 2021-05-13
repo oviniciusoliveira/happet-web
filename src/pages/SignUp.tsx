@@ -91,13 +91,11 @@ function SignIn() {
                   ></input>
                   {showPassword ? (
                     <FiEyeOff
-                      color="#eea0ae"
                       onClick={() => setShowPassword(!showPassword)}
                       size={20}
                     />
                   ) : (
                     <FiEye
-                      color="#eea0ae"
                       onClick={() => setShowPassword(!showPassword)}
                       size={20}
                     />
@@ -115,7 +113,6 @@ function SignIn() {
                   ></input>
                   {showConfirmPassword ? (
                     <FiEyeOff
-                      color="#eea0ae"
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
@@ -123,7 +120,6 @@ function SignIn() {
                     />
                   ) : (
                     <FiEye
-                      color="#eea0ae"
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
