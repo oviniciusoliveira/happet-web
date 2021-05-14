@@ -22,6 +22,6 @@
  - [X] Temas: Light e Dark utilizando persistência de estado
  - [X] Notificações ao realizar ações
  - [X] Responsivo para Mobile
- - [ ] Animação de carregamento
- - [ ] Localização atual do usuário
+ - [X] Animação de carregamento
+ - [X] Localização atual do usuário
 ---

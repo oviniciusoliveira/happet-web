@@ -26,7 +26,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  max-height: 60rem;
+  max-height: 70rem;
 `;
 
 export const Header = styled.header`
@@ -145,6 +145,7 @@ export const RegisterButton = styled.div`
   @media screen and (max-width: 700px) {
     padding: 1rem 3rem;
     font-size: 1.8rem;
+    border-radius: 1.5rem;
   }
 `;
 

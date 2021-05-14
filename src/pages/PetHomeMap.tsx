@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FiPlus, FiArrowRight, FiArrowLeft } from "react-icons/fi";
 
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 
 import { ThemeContext } from "styled-components";
 
@@ -20,6 +20,7 @@ import { mapIconLight, mapIconDark } from "./../utils/mapIcon";
 import api from "../services/api";
 import LogoComTexto from "../components/LogoComTexto";
 import Loading from "./../components/Loading";
+import { toast } from "react-toastify";
 
 interface PetHome {
   id: number;
@@ -29,22 +30,50 @@ interface PetHome {
 }
 
 function PetHomeMap() {
-  const [petHomes, setPetHomes] = useState<PetHome[]>([]);
   const [acceptedPetHomes, setAcceptedPetHomes] = useState<PetHome[]>([]);
   const { title } = useContext(ThemeContext);
   const history = useHistory();
   const [loading, setLoading] = useState(false);
+  const [centerPosition, setCenterPosition] = useState({
+    latitude: -23.5653115,
+    longitude: -46.6411145,
+  });
+
+  function MyComponent() {
+    const map = useMap();
+    useEffect(() => {
+      map.setView([centerPosition.latitude, centerPosition.longitude]);
+    }, [map]);
+    return null;
+  }
+
+
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setCenterPosition({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      });
+    } else {
+      console.log("Not Available");
+    }
+  }, []);
 
   useEffect(() => {
     setLoading(true);
-    api.get("pet-homes").then((response) => {
-      setPetHomes(response.data);
-      setAcceptedPetHomes(
-        petHomes.filter((petHome: any) => petHome.is_accepted)
-      );
-    });
-    setLoading(false);
-  }, [petHomes]);
+    try {
+      api.get("pet-homes?accepted=true").then((response) => {
+        setAcceptedPetHomes(response.data);
+      });
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      toast.error("erro");
+    }
+  }, []);
 
   return (
     <Container>
@@ -64,10 +93,11 @@ function PetHomeMap() {
         </button>
       </Aside>
       <MapContainer
-        center={[-23.5653115, -46.6411145]}
+        center={[centerPosition.latitude, centerPosition.longitude]}
         zoom={15}
         style={{ width: "100%", height: "100%" }}
       >
+        <MyComponent />
         <TileLayer
           url={`https://api.mapbox.com/styles/v1/mapbox/${title}-v10/tiles/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
         />
