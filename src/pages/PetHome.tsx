@@ -49,6 +49,10 @@ export default function PetHome() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
+  useEffect(() => {
     api.get(`pet-homes/${params.id}`).then((response) => {
       setPetHome(response.data);
     });

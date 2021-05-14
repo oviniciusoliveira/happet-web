@@ -4,7 +4,7 @@ function LogoComTexto() {
   return (
     <Logo>
       <LogoImg/>
-      <strong>Happet</strong>
+      <strong className="logoText">Happet</strong>
     </Logo>
   );
 }

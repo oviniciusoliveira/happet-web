@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   margin-left: 10rem;
+  @media screen and (max-width: 1080px) {
+    flex-direction: column;
+  }
 `;
 
 export const AcceptContainer = styled.div`
@@ -16,9 +19,9 @@ export const AcceptContainer = styled.div`
     cursor: pointer;
     height: 6.4rem;
     border: 0;
-    background-color: ${({theme}) => theme.colors.buttonBackground};
+    background-color: ${({ theme }) => theme.colors.buttonBackground};
     border-radius: 2rem;
-    color: ${({theme}) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
     font-weight: 800;
 
     display: flex;
@@ -33,7 +36,7 @@ export const AcceptContainer = styled.div`
     }
 
     &.reject-button {
-      background-color: ${({theme}) => theme.colors.pinkMedium};
+      background-color: ${({ theme }) => theme.colors.pinkMedium};
     }
 
     :hover {
@@ -44,7 +47,7 @@ export const AcceptContainer = styled.div`
     }
 
     &:first-child {
-        margin-right: 2rem;
+      margin-right: 2rem;
     }
   }
 `;

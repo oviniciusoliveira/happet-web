@@ -9,6 +9,10 @@ export const Container = styled.div`
   p { 
     margin-bottom: 2rem;
   }
+
+  @media screen and (max-width: 1080px) {
+    flex-direction: column;
+  }
 `;
 
 
@@ -16,4 +20,10 @@ export const FormWrapper = styled.div`
   display: flex;
   width: 100%;
   padding: 2rem;
+
+  @media screen and (max-width: 1080px) {
+    flex-grow: 1;
+    justify-content: center;
+
+  }
 `;

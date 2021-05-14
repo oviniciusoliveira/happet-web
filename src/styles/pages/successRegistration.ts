@@ -18,6 +18,10 @@ export const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 1080px) {
+    justify-content: center;
+  }
 `;
 
 export const Main = styled.main`
@@ -80,4 +84,8 @@ export const Main = styled.main`
   }
 `;
 
-export const ImageDiv = styled.div``;
+export const ImageDiv = styled.div`
+  @media screen and (max-width: 1080px) {
+    display: none;
+  }
+`;

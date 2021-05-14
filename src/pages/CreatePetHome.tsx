@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, ChangeEvent, useContext } from "react";
+import React, { useState, useEffect, FormEvent, ChangeEvent, useContext } from "react";
 
 import Sidebar from "./../components/Sidebar";
 
@@ -40,6 +40,10 @@ export default function PetHomesMap() {
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<Image[]>([]);
   const { title } = useContext(ThemeContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
 
   function MyComponent() {
     useMapEvents({

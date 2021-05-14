@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   min-height: 100vh;
+
+  @media screen and (max-width: 1080px) {
+    flex-direction: column;
+  }
 `;
 
 export const Main = styled.main`
@@ -12,6 +16,11 @@ export const Main = styled.main`
   padding: 5rem;
 
   margin-left: 6rem;
+
+  @media screen and (max-width: 1080px) {
+    margin-left: 0;
+    padding: 2rem;
+  }
 `;
 
 export const PetHomesContainer = styled.div`
@@ -23,9 +32,9 @@ export const PetHomesContainer = styled.div`
   grid-gap: 3rem;
 
   @media (min-width: 900px) {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   @media (min-width: 1300px) {
-      grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 `;

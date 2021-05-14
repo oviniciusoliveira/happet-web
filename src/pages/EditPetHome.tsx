@@ -52,6 +52,10 @@ export default function EditPetHome() {
   const { title } = useContext(ThemeContext);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
+  useEffect(() => {
     async function loadPetHome() {
       const { data: petHome } = await api.get(`/pet-homes/${params.id}`);
 

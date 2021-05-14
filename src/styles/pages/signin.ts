@@ -4,6 +4,13 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
+
+  @media screen and (max-width: 1080px) {
+    flex-direction: column;
+    height: 100%;
+    min-height: 100vh;
+
+  }
 `;
 
 export const RememberContainer = styled.div`
@@ -30,4 +37,9 @@ export const FormWrapper = styled.div`
   display: flex;
   width: 100%;
   padding: 2rem;
+
+  @media screen and (max-width: 1080px) {
+    flex-grow: 1;
+    align-items: center;
+  }
 `;

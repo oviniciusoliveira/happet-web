@@ -44,6 +44,16 @@ export const Container = styled.div`
   .leaflet-popup-tip-container {
     display: none;
   }
+
+  @media screen and (max-width: 1080px) {
+    flex-direction: column;
+    height: 100%;
+
+    .leaflet-container {
+      min-height: 450px;
+    }
+  }
+
 `;
 
 export const Aside = styled.aside`
@@ -73,6 +83,17 @@ export const Aside = styled.aside`
       background-color: ${({ theme }) => theme.colors.secundary};
     }
   }
+
+  @media screen and (max-width: 1080px) {
+    width: 100%;
+
+
+    button {
+      display: none;
+    }
+
+  }
+
 `;
 
 export const Header = styled.header`
@@ -97,6 +118,10 @@ export const Footer = styled.footer`
 
   strong {
     font-weight: 800;
+  }
+
+  @media screen and (max-width: 1080px) {
+    align-items: flex-end;
   }
 `;
 

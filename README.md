@@ -19,10 +19,9 @@
       - [X] Dashboard - Editar Pet Home
       - [X] Dashboard - Exclusão de Pet Homes
  - [X] Lembrar login
- - [ ] Temas: Light e Dark utilizando persistência de estado
+ - [X] Temas: Light e Dark utilizando persistência de estado
+ - [X] Notificações ao realizar ações
+ - [X] Responsivo para Mobile
  - [ ] Animação de carregamento
- - [ ] Notificações ao realizar ações
  - [ ] Localização atual do usuário
- - [ ] Responsivo para Mobile
-
 ---

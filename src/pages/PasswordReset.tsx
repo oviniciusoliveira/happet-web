@@ -92,13 +92,13 @@ function PasswordReset() {
                   ></input>
                   {showPassword ? (
                     <FiEyeOff
-                      color="#eea0ae"
+                      color={`${({ theme }: any) => theme.colors.primary}`}
                       onClick={() => setShowPassword(!showPassword)}
                       size={20}
                     />
                   ) : (
                     <FiEye
-                      color="#eea0ae"
+                      color={`${({ theme }: any) => theme.colors.primary}`}
                       onClick={() => setShowPassword(!showPassword)}
                       size={20}
                     />
@@ -116,7 +116,7 @@ function PasswordReset() {
                   ></input>
                   {showConfirmPassword ? (
                     <FiEyeOff
-                      color="#eea0ae"
+                      color={`${({ theme }: any) => theme.colors.primary}`}
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
@@ -124,7 +124,7 @@ function PasswordReset() {
                     />
                   ) : (
                     <FiEye
-                      color="#eea0ae"
+                      color={`${({ theme }: any) => theme.colors.primary}`}
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }

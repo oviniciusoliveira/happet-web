@@ -7,6 +7,14 @@ export const Container = styled.div`
   main {
     flex: 1;
   }
+
+  @media screen and (max-width: 1080px) {
+    flex-direction: column;
+
+    main {
+      padding: 1rem;
+    }
+  }
 `;
 
 export const Details = styled.div`
@@ -24,14 +32,25 @@ export const Details = styled.div`
     height: 30rem;
     object-fit: cover;
   }
+
+  @media screen and (max-width: 1080px) {
+    max-width: 100%;
+  }  
 `;
 
 export const Images = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  column-gap: 1.6rem;
+  gap: 1.6rem;
 
   margin: 1.6rem 4rem 0;
+
+  @media screen and (max-width: 1080px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1.6rem;
+    margin-bottom: 0;
+  }  
 `;
 
 export const ImageButton = styled.button`
@@ -107,6 +126,11 @@ export const DetailsContent = styled.div`
     line-height: 4.6rem;
     color: ${({ theme }) => theme.colors.formColor};
   }
+  @media screen and (max-width: 1080px) {
+    padding: 2rem;
+    margin-top: 4rem;
+  }
+
 `;
 
 export const OpenDetails = styled.div`

@@ -3,10 +3,18 @@ import { InputBlock } from "../global";
 
 export const Container = styled.div`
   display: flex;
+
+  @media screen and (max-width: 1080px) {
+    flex-direction: column;
+  }
 `;
 
 export const Main = styled.main`
   width: 100%;
+
+  @media screen and (max-width: 1080px) {
+    padding: 2rem;
+  }
 `;
 
 export const Fieldset = styled.fieldset`
@@ -54,6 +62,13 @@ export const Form = styled.form`
   ${InputBlock} + ${InputBlock} {
     margin-top: 2.4rem;
   }
+
+  @media screen and (max-width: 1080px) {
+    width: 100%;
+    max-width: 70rem;
+    padding: 2rem;
+    margin: 6.4rem auto;
+  }
 `;
 
 export const ButtonSelect = styled.div`
@@ -62,16 +77,16 @@ export const ButtonSelect = styled.div`
 
   button {
     height: 6.4rem;
-    background: ${({theme}) => theme.colors.white};
-    border: 1px solid ${({theme}) => theme.colors.borderFormColor};
-    color: ${({theme}) => theme.colors.formColor};
+    background: ${({ theme }) => theme.colors.white};
+    border: 1px solid ${({ theme }) => theme.colors.borderFormColor};
+    color: ${({ theme }) => theme.colors.formColor};
     cursor: pointer;
   }
 
   button.active {
-    background: ${({theme}) => theme.colors.secundary};
-    border: 1px solid ${({theme}) => theme.colors.borderFormColor};
-    color: ${({theme}) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.secundary};
+    border: 1px solid ${({ theme }) => theme.colors.borderFormColor};
+    color: ${({ theme }) => theme.colors.white};
   }
 
   button:first-child {
@@ -88,6 +103,16 @@ export const ImagesContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 1.6rem;
+
+  label {
+    display: flex;
+    width: 144px;
+  }
+
+  @media screen and (max-width: 1080px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
 `;
 
 export const ImagePreview = styled.div`
@@ -106,7 +131,7 @@ export const ImagePreview = styled.div`
     position: absolute;
     top: 0px;
     right: 0px;
-    background-color: ${({theme}) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.white};
     padding: 10px;
     padding-bottom: 5px;
     border-top-right-radius: 11px;
@@ -115,14 +140,14 @@ export const ImagePreview = styled.div`
     cursor: pointer;
     transition: all 0.2s;
 
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     cursor: pointer;
 
     &:hover {
-      background-color: ${({theme}) => theme.colors.backgroundLight};
+      background-color: ${({ theme }) => theme.colors.backgroundLight};
     }
   }
   svg {
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
   }
 `;

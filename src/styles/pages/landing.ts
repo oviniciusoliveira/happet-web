@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
-import landingImg from "../../images/landing.png";
 
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background: linear-gradient(
     330deg,
-    ${({theme}) => theme.colors.background} 0%,
-    ${({theme}) => theme.colors.backgroundGradient} 100%
+    ${({ theme }) => theme.colors.background} 0%,
+    ${({ theme }) => theme.colors.backgroundGradient} 100%
   );
   display: flex;
   justify-content: center;
@@ -16,47 +15,40 @@ export const Container = styled.div`
 
   padding: 1rem;
 
+  @media screen and (max-width: 1080px) {
+    align-items: flex-start;
+  }
 `;
 
 export const Content = styled.div`
-  position: relative;
-
   width: 100%;
   max-width: 110rem;
-
-  height: 100%;
-  max-height: 68rem;
-
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
+  height: 100%;
+  max-height: 60rem;
+`;
+
+export const Header = styled.header`
+  display: flex;
   justify-content: space-between;
-  
+  padding: 1rem;
 
-  background: ${() => `url(${landingImg}) no-repeat 80%`};
-  background-size: 450px;
-`;
+  @media screen and (max-width: 1080px) {
 
-export const Main = styled.main`
-  max-width: 36rem;
-
-  h1 {
-    font-size: 7.6rem;
-    font-weight: 900;
-    line-height: 7rem;
+    .logoText {
+      display: none;
+    }
   }
+`
 
-  p {
-    margin-top: 4rem;
-    font-size: 2.4rem;
-    line-height: 3.4rem;
-  }
-`;
+export const LocationAndTheme = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+`
 
 export const Location = styled.div`
-  position: absolute;
-  right: 0;
-  top: 0;
 
   font-size: 2.4rem;
   line-height: 3.4rem;
@@ -77,15 +69,64 @@ export const Location = styled.div`
   }
 `;
 
+export const MainAndImage = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem;
+  flex-grow: 1;
+  max-height: 60rem;
+  align-items: center;
+
+  @media screen and (max-width: 700px) {
+    justify-content: flex-start;
+  }
+`
+
+export const Main = styled.main`
+  max-width: 36rem;
+  
+
+  h1 {
+    font-size: 7.6rem;
+    font-weight: 900;
+    line-height: 7rem;
+  }
+
+  p {
+    margin-top: 4rem;
+    font-size: 2.4rem;
+    line-height: 3.4rem;
+  }
+  @media screen and (max-width: 1080px) {
+    padding: 1rem;
+    h1 {
+      font-size: 4.6rem;
+      line-height: 4.6rem;
+    }
+  }
+`;
+
+export const LandingImage = styled.img`
+    max-width: 350px;
+
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
+`;
+
+export const Footer = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+`
+
 export const RegisterButton = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
   padding: 2rem 6rem;
-  background: ${({theme}) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.primary};
   border-radius: 3rem;
 
-  color: ${({theme}) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
   font-size: 2.5rem;
   font-weight: 700;
 
@@ -98,18 +139,19 @@ export const RegisterButton = styled.div`
 
   &:hover {
     transition: background-color 0.2s;
-    background-color: ${({theme}) => theme.colors.secundary};
+    background-color: ${({ theme }) => theme.colors.secundary};
+  }
+
+  @media screen and (max-width: 700px) {
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
   }
 `;
 
 export const Enter = styled.div`
-  position: absolute;
-  right: 0;
-  bottom: 0;
-
-  width: 8rem;
-  height: 8rem;
-  background: ${({theme}) => theme.colors.primary};
+  width: 7rem;
+  height: 7rem;
+  background: ${({ theme }) => theme.colors.primary};
   border-radius: 3rem;
 
   display: flex;
@@ -120,7 +162,12 @@ export const Enter = styled.div`
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: ${({theme}) => theme.colors.secundary};
+    background-color: ${({ theme }) => theme.colors.secundary};
     transition: background-color 0.2s;
+  }
+  @media screen and (max-width: 700px) {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 2rem;
   }
 `;

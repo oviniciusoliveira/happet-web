@@ -37,7 +37,7 @@ function DeletePetHome() {
       <ContentWrapper>
         <Main>
           <h1>Excluir!</h1>
-          <p>Você tem certeza que quer excluir {petHome.name}?</p>
+          <p>Você tem certeza que quer excluir o Pet Home {petHome.name}?</p>
           <div className="buttons">
             <button onClick={() => history.push("/")}>
               Voltar para o Mapa

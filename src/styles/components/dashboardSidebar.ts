@@ -52,6 +52,12 @@ export const Container = styled.aside`
       }
     }
   }
+  @media screen and (max-width: 1080px) {
+    position: static;
+    flex-direction: row;
+    height: auto;
+  }
+
 `;
 
 export const Nav = styled.nav`
@@ -61,6 +67,15 @@ export const Nav = styled.nav`
   button + button {
     margin-top: 1.6rem;
   }
+
+  @media screen and (max-width: 1080px) {
+    flex-direction: row;
+    button + button {
+    margin-left: 1.6rem;
+    margin-top: 0;
+  }
+  }
+
 `;
 
 export const Footer = styled.footer`

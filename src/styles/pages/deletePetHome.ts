@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
   display: flex;
-  background-color: ${({theme}) => theme.colors.pinkMedium};
+  background-color: ${({ theme }) => theme.colors.pinkMedium};
 `;
 
 export const ContentWrapper = styled.div`
@@ -17,13 +17,17 @@ export const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 1080px) {
+    padding: 5rem 2rem;
+    justify-content: center;
+  }
 `;
 
 export const Main = styled.main`
   max-width: 420px;
   text-align: center;
 
-  color: ${({theme}) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
   display: flex;
   flex-direction: column;
 
@@ -56,7 +60,7 @@ export const Main = styled.main`
       border: none;
       border-radius: 2rem;
 
-      background-color: ${({theme}) => theme.colors.pinkDark};
+      background-color: ${({ theme }) => theme.colors.pinkDark};
 
       cursor: pointer;
 
@@ -79,4 +83,8 @@ export const Main = styled.main`
   }
 `;
 
-export const ImageDiv = styled.div``;
+export const ImageDiv = styled.div`
+  @media screen and (max-width: 1080px) {
+    display: none;
+  }
+`;

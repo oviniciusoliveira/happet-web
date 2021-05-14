@@ -2,11 +2,25 @@ import styled, { createGlobalStyle } from "styled-components";
 import "react-toastify/dist/ReactToastify.css";
 
 export default createGlobalStyle`
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+:root {
+  --mobileS:  330px;
+  --mobileM:  400px;
+  --mobileL:  480px;
+  --tabletS:  600px;
+  --tabletL:  768px;
+  --desktopXS: 900px;
+  --desktopS:  1080px;
+  --desktopM:  1200px;
+  --desktopL:  1400px;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 
 html {
     font-size: 62.5%;
@@ -87,7 +101,7 @@ export const InputBlock = styled.div`
 `;
 
 export const InputPasswordBlock = styled.div`
-margin-top: 2rem;
+  margin-top: 2rem;
   label {
     display: flex;
     color: ${({ theme }) => theme.colors.formColor};
@@ -126,7 +140,7 @@ margin-top: 2rem;
     top: 33%;
     right: 2rem;
     cursor: pointer;
-    color: ${({theme}) => theme.colors.primary}
+    color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
