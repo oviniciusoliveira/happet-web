@@ -13,6 +13,7 @@ import {
   InputPasswordBlock,
 } from "../styles/global";
 import { Container, FormWrapper } from "./../styles/pages/forgotPassword";
+import Loading from './../components/Loading';
 
 function PasswordReset() {
   const [token, setToken] = useState("");
@@ -22,24 +23,28 @@ function PasswordReset() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
   const handleResetPassword = async () => {
     if (password.length >= 6) {
       if (password === confirmPassword) {
         try {
+          setLoading(true);
           const { data } = await api.post("/reset-password", {
             token,
             email,
             password,
           });
-          console.log(data);
           if (data.success) {
+            setLoading(false);
             toast.success(data.success);
             history.push("/signin");
           } else if (data.error) {
+            setLoading(false);
             toast.warn(data.error);
           }
         } catch (error) {
+          setLoading(false);
           toast.error("Não foi possível redefinir a senha");
         }
       } else {
@@ -54,6 +59,7 @@ function PasswordReset() {
     <>
       <GoBack route="/forgot-password" />
       <Container>
+        {loading && <Loading />}
         <SidePanel />
         <FormWrapper>
           <Form>

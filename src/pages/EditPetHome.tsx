@@ -15,6 +15,9 @@ import { toast } from "react-toastify";
 
 import { useDashboard } from "./../contexts/dashboard";
 
+import Loading from './../components/Loading';
+
+
 import {
   Container,
   Main,
@@ -50,6 +53,7 @@ export default function EditPetHome() {
   const [removeImage, setRemoveImage] = useState<any>([]);
   const { setPage } = useDashboard();
   const { title } = useContext(ThemeContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -57,8 +61,9 @@ export default function EditPetHome() {
 
   useEffect(() => {
     async function loadPetHome() {
+      setLoading(true);
       const { data: petHome } = await api.get(`/pet-homes/${params.id}`);
-
+      
       setId(petHome.id);
       setName(petHome.name);
       setAbout(petHome.about);
@@ -70,17 +75,21 @@ export default function EditPetHome() {
       setPreviewImages(petHome.images);
       setWhatsapp(petHome.whatsapp);
       setIsAccepted(petHome.is_accepted);
+      setLoading(false);
     }
     loadPetHome();
   }, [params.id]);
 
   async function handleReject() {
+    setLoading(true);
     try {
       const response = await api.delete(`/pet-homes/${params.id}`);
+      setLoading(false);
       toast.success(response);
       history.push("/pending-pet-homes");
       setPage("pending-pet-homes");
     } catch (error) {
+      setLoading(false);
       toast.error("Erro ao Rejeitar o Pedido!");
     }
   }
@@ -122,6 +131,7 @@ export default function EditPetHome() {
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+    setLoading(true);
     try {
       const { latitude, longitude } = position;
 
@@ -145,16 +155,19 @@ export default function EditPetHome() {
       });
 
       await api.put("pet-homes", data);
+      setLoading(false);
       toast.success("Pet Home Cadastrado");
       history.push("/accepted-pet-homes");
       setPage("accepted-pet-homes");
     } catch (error) {
+      setLoading(false);
       toast.error("Não foi possível cadastrar o Pet Home!");
     }
   }
 
   return (
     <Container>
+      {loading && <Loading />}
       <Sidebar />
       <Main>
         <Form onSubmit={handleSubmit}>

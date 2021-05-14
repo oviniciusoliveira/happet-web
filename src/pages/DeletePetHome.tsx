@@ -7,26 +7,33 @@ import { PetHomeParams } from "./PetHome";
 import { PetHomeInterface } from "./PetHome";
 import { FiTrash } from "react-icons/fi";
 import { toast } from "react-toastify";
+import Loading from './../components/Loading';
 
 function DeletePetHome() {
   const params = useParams<PetHomeParams>();
   const history = useHistory();
   const [petHome, setPetHome] = useState({} as PetHomeInterface);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function loadPetHome() {
+      setLoading(true);
       const { data } = await api.get(`/pet-homes/${params.id}`);
+      setLoading(false);
       setPetHome(data);
     }
     loadPetHome();
   }, [params.id]);
 
   const handlePetHomeDelete = async () => {
+    setLoading(true);
     try {
       await api.delete(`pet-homes/${params.id}`);
+      setLoading(false);
       toast.success("Pet Home Excluido");
       history.push("/");
     } catch (error) {
+      setLoading(false);
       toast.error("Não foi possível excluir o Pet Home");
       history.push("/");
     }
@@ -34,6 +41,7 @@ function DeletePetHome() {
 
   return (
     <Container>
+      {loading && <Loading />}
       <ContentWrapper>
         <Main>
           <h1>Excluir!</h1>

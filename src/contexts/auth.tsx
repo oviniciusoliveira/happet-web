@@ -43,8 +43,8 @@ export const AuthProvider: React.FC = ({ children }) => {
       password,
     });
     if (data.error) {
-      toast.warn(data.error);
       setLoading(false);
+      toast.warn(data.error);
       return false;
     } else {
       toast.success("Login Efetuado com Sucesso!");

@@ -1,4 +1,10 @@
-import React, { useState, useEffect, FormEvent, ChangeEvent, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  FormEvent,
+  ChangeEvent,
+  useContext,
+} from "react";
 
 import Sidebar from "./../components/Sidebar";
 
@@ -11,6 +17,7 @@ import api from "../services/api";
 import { useHistory } from "react-router-dom";
 import { InputBlock } from "./../styles/global";
 import { toast } from "react-toastify";
+import Loading from "./../components/Loading";
 
 import {
   Container,
@@ -40,10 +47,11 @@ export default function PetHomesMap() {
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<Image[]>([]);
   const { title } = useContext(ThemeContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [])
+  }, []);
 
   function MyComponent() {
     useMapEvents({
@@ -82,6 +90,8 @@ export default function PetHomesMap() {
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
+    setLoading(true);
+
     const { latitude, longitude } = position;
 
     const data = new FormData();
@@ -100,9 +110,11 @@ export default function PetHomesMap() {
 
     try {
       await api.post("pet-homes", data);
+      setLoading(false);
       toast.success("Pet Home criado com Sucesso!");
       history.push("/success-pet-home");
     } catch (error) {
+      setLoading(false);
       toast.error("Não foi possível criar seu Pet Home, verifique os Campos!");
     }
   }
@@ -110,6 +122,7 @@ export default function PetHomesMap() {
   return (
     <Container>
       <Sidebar />
+      {loading && <Loading />}
       <Main>
         <Form onSubmit={handleSubmit} className="create-petHome-form">
           <Fieldset>

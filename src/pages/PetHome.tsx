@@ -23,6 +23,8 @@ import { useParams } from "react-router-dom";
 import { ThemeContext } from "styled-components";
 import { useContext } from "react";
 
+import Loading from './../components/Loading';
+
 export interface PetHomeInterface {
   latitude: number;
   longitude: number;
@@ -47,15 +49,18 @@ export default function PetHome() {
   const [petHome, setPetHome] = useState<PetHomeInterface>();
   const params = useParams<PetHomeParams>();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [])
 
   useEffect(() => {
+    setLoading(true);
     api.get(`pet-homes/${params.id}`).then((response) => {
       setPetHome(response.data);
     });
+    setLoading(false);
   }, [params.id]);
 
   if (!petHome) {
@@ -64,6 +69,7 @@ export default function PetHome() {
 
   return (
     <Container>
+      {loading && <Loading />}
       <Sidebar />
 
       <main>

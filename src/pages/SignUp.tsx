@@ -16,6 +16,7 @@ import { useHistory } from "react-router-dom";
 import GoBack from "./../components/GoBack";
 import api from "../services/api";
 import { toast } from "react-toastify";
+import Loading from './../components/Loading';
 
 function SignIn() {
   const history = useHistory();
@@ -25,11 +26,13 @@ function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   async function handleSignUp() {
     if (password.length >= 6) {
       if (password === confirmPassword) {
         try {
+          setLoading(true);
           const { data } = await api.post("/users", {
             name,
             email,
@@ -37,12 +40,15 @@ function SignIn() {
           });
 
           if (data.success) {
+            setLoading(false);
             toast.success(data.success);
             history.push("/signin");
           } else if (data.error) {
+            setLoading(false);
             toast.warn(data.error);
           }
         } catch (error) {
+          setLoading(false);
           toast.error("Não foi possível realizar o cadastro");
         }
       } else {
@@ -57,6 +63,7 @@ function SignIn() {
     <>
       <GoBack route="/signin" />
       <Container>
+        {loading && <Loading />}
         <SidePanel />
         <FormWrapper>
           <Form>

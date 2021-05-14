@@ -17,9 +17,9 @@ import {
 import "leaflet/dist/leaflet.css";
 
 import { mapIconLight, mapIconDark } from "./../utils/mapIcon";
-import { LogoImg } from "./../styles/components/logo";
 import api from "../services/api";
 import LogoComTexto from "../components/LogoComTexto";
+import Loading from "./../components/Loading";
 
 interface PetHome {
   id: number;
@@ -32,19 +32,23 @@ function PetHomeMap() {
   const [petHomes, setPetHomes] = useState<PetHome[]>([]);
   const [acceptedPetHomes, setAcceptedPetHomes] = useState<PetHome[]>([]);
   const { title } = useContext(ThemeContext);
-  const history = useHistory(); 
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     api.get("pet-homes").then((response) => {
       setPetHomes(response.data);
       setAcceptedPetHomes(
         petHomes.filter((petHome: any) => petHome.is_accepted)
       );
     });
+    setLoading(false);
   }, [petHomes]);
 
   return (
     <Container>
+      {loading && <Loading />}
       <Aside>
         <Header>
           <LogoComTexto />

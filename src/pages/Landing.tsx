@@ -16,8 +16,6 @@ import {
   Enter,
   RegisterButton,
 } from "./../styles/pages/landing";
-import { Logo, LogoImg } from "./../styles/components/logo";
-import LogoHappet from "./../images/logo";
 import LogoComTexto from "./../components/LogoComTexto";
 
 import Switch from "react-switch";
@@ -75,19 +73,6 @@ function Landing({ toggleTheme }: LandingProps) {
             </Enter>
           </Link>
         </Footer>
-        {/* 
-        <Main>
-          <h1>Adote um animal de estimação</h1>
-          <p>Encontre um ponto de adoção perto de você</p>
-          <Link to="signin">
-            <RegisterButton>Acesso Restrito</RegisterButton>
-          </Link>
-        </Main>
-        <Link to="/app">
-          <Enter>
-            <FiArrowRight size={26} color="white" />
-          </Enter>
-        </Link> */}
       </Content>
     </Container>
   );

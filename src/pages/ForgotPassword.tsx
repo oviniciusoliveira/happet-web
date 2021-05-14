@@ -6,21 +6,27 @@ import api from "./../services/api";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router";
 import GoBack from "../components/GoBack";
+import Loading from "./../components/Loading";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
   const handleForgotPassword = async () => {
+    setLoading(true);
     try {
       const { data } = await api.post("/forgot-password", { email });
       if (data.success) {
+        setLoading(false);
         toast.success(data.success);
         history.push("/password-reset");
       } else if (data.error) {
+        setLoading(false);
         toast.warn(data.error);
       }
     } catch (error) {
+      setLoading(false);
       toast.error("Não conseguimos enviar o email");
     }
   };
@@ -29,6 +35,7 @@ function ForgotPassword() {
     <>
       <GoBack route="/signin" />
       <Container>
+        {loading && <Loading />}
         <SidePanel />
         <FormWrapper>
           <Form>

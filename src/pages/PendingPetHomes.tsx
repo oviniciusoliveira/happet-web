@@ -8,21 +8,25 @@ import {
 import { DashboardHeader } from "./../styles/components/dashboardHeader";
 import DashboardSidebar from "../components/DashboardSidebar";
 import PetHomeItem from "../components/PetHomeItem";
+import Loading from './../components/Loading';
 
 function PendingPetHomes() {
   const [pendingPetHomes, setPendingPetHomes] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getPetHomes() {
+      setLoading(true);
       const { data } = await api.get("/pet-homes");
-      console.log(data);
       setPendingPetHomes(data.filter((petHome: any) => !petHome.is_accepted));
+      setLoading(false);
     }
     getPetHomes();
   }, []);
 
   return (
     <Container>
+      {loading && <Loading />}
       <DashboardSidebar />
       <Main>
         <DashboardHeader>
