@@ -103,6 +103,7 @@ export default function PetHomesMap() {
     data.append("instructions", instructions);
     data.append("opening_hours", opening_hours);
     data.append("open_on_weekends", String(open_on_weekends));
+    data.append("is_accepted", "false");
     data.append("whatsapp", String(whatsapp));
     images.forEach((image) => {
       data.append("images", image);
