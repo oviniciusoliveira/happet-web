@@ -53,7 +53,6 @@ export const Container = styled.div`
       min-height: 450px;
     }
   }
-
 `;
 
 export const Aside = styled.aside`
@@ -87,13 +86,10 @@ export const Aside = styled.aside`
   @media screen and (max-width: 1080px) {
     width: 100%;
 
-
     button {
       display: none;
     }
-
   }
-
 `;
 
 export const Header = styled.header`
@@ -108,6 +104,17 @@ export const Header = styled.header`
     margin-top: 2.4rem;
     line-height: 2.8rem;
   }
+
+  @media screen and (max-width: 1080px) {
+    h2 {
+      font-size: 2rem;
+      line-height: 2rem;
+      margin-top: 2rem;
+    }
+    p {
+      display: none;
+    }
+  }
 `;
 
 export const Footer = styled.footer`
@@ -121,7 +128,7 @@ export const Footer = styled.footer`
   }
 
   @media screen and (max-width: 1080px) {
-    align-items: flex-end;
+    display: none;
   }
 `;
 

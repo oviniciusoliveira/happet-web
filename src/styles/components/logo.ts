@@ -6,6 +6,8 @@ export const Logo = styled.div`
   align-items: center;
   gap: 2rem;
 
+  cursor: pointer;
+
   strong {
     font-size: 48px;
   }

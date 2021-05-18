@@ -77,7 +77,7 @@ function PetHomeMap() {
     <Container>
       {loading && <Loading />}
       <Aside>
-        <Header>
+        <Header>      
           <LogoComTexto />
           <h2>Identifique um Pet Home no mapa</h2>
           <p>Muitos animais estão esperando por um novo dono</p>
