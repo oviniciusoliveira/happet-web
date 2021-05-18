@@ -62,19 +62,15 @@ function PetHomeMap() {
 
   useEffect(() => {
     setLoading(true);
-
-    const getPetHomes = async () => {
-      try {
-        await api.get("pet-homes?accepted=true").then((response) => {
-          setAcceptedPetHomes(response.data);
-        });
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        toast.error("Erro ao requisitar Pet Homes");
-      }
-    };
-    getPetHomes();
+    try {
+      api.get("pet-homes?accepted=true").then((response) => {
+        setAcceptedPetHomes(response.data);
+      });
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      toast.error("Erro ao requisitar Pet Homes");
+    }
   }, []);
 
   return (
