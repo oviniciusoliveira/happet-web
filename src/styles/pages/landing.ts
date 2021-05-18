@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Container = styled.div`
   width: 100vw;
   height: 100%;
@@ -15,10 +14,6 @@ export const Container = styled.div`
   align-items: center;
 
   padding: 1rem;
-
-  @media screen and (max-width: 1080px) {
-    align-items: flex-start;
-  }
 `;
 
 export const Content = styled.div`
@@ -26,8 +21,8 @@ export const Content = styled.div`
   max-width: 110rem;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  max-height: 70rem;
+  justify-content: space-between;
+  flex-grow: 1;
 `;
 
 export const Header = styled.header`
@@ -36,21 +31,19 @@ export const Header = styled.header`
   padding: 1rem;
 
   @media screen and (max-width: 1080px) {
-
     .logoText {
       display: none;
     }
   }
-`
+`;
 
 export const LocationAndTheme = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-end;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
 
 export const Location = styled.div`
-
   font-size: 2.4rem;
   line-height: 3.4rem;
 
@@ -74,18 +67,15 @@ export const MainAndImage = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 3rem;
-  flex-grow: 1;
-  max-height: 60rem;
   align-items: center;
 
   @media screen and (max-width: 700px) {
     justify-content: flex-start;
   }
-`
+`;
 
 export const Main = styled.main`
   max-width: 36rem;
-  
 
   h1 {
     font-size: 7.6rem;
@@ -100,6 +90,7 @@ export const Main = styled.main`
   }
   @media screen and (max-width: 1080px) {
     padding: 1rem;
+    max-width: 28rem;
     h1 {
       font-size: 4.6rem;
       line-height: 4.6rem;
@@ -108,11 +99,11 @@ export const Main = styled.main`
 `;
 
 export const LandingImage = styled.img`
-    max-width: 350px;
+  max-width: 350px;
 
-    @media screen and (max-width: 700px) {
-      display: none;
-    }
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const Footer = styled.footer`
@@ -120,7 +111,7 @@ export const Footer = styled.footer`
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
-`
+`;
 
 export const RegisterButton = styled.div`
   padding: 2rem 6rem;

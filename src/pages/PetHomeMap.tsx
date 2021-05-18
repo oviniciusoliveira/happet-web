@@ -47,8 +47,6 @@ function PetHomeMap() {
     return null;
   }
 
-
-
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -64,15 +62,19 @@ function PetHomeMap() {
 
   useEffect(() => {
     setLoading(true);
-    try {
-      api.get("pet-homes?accepted=true").then((response) => {
-        setAcceptedPetHomes(response.data);
-      });
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      toast.error("erro");
-    }
+
+    const getPetHomes = async () => {
+      try {
+        await api.get("pet-homes?accepted=true").then((response) => {
+          setAcceptedPetHomes(response.data);
+        });
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        toast.error("Erro ao requisitar Pet Homes");
+      }
+    };
+    getPetHomes();
   }, []);
 
   return (
