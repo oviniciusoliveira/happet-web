@@ -8,7 +8,7 @@
   </a>
     
    <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?style=flat">
-  
+
 
   <p align="center">
   <a href="https://app.netlify.com/sites/happet/deploys" target="_blank">
@@ -29,9 +29,9 @@
  👉<a href="#-sobre-o-projeto" style="text-decoration: none; "> Sobre o Projeto</a> <br/>
 👉<a href="#-funcionalidades" style="text-decoration: none; "> Funcionalidades</a> <br/>
 👉<a href="#-layout" style="text-decoration: none"> Layout</a> <br/>
-👉<a href="#-como-executar-o-projeto" style="text-decoration: none"> Como executar</a> <br/>
-👉<a href="#-tecnologias" style="text-decoration: none"> Tecnologias</a> <br/>
-👉<a href="#-desenvolvedor" style="text-decoration: none">Desenvolvedor</a> <br/>
+👉<a href="#-como-executar-o-projeto" style="text-decoration: none"> Instalação e Configuração</a> <br/>
+👉<a href="#-tecnologias" style="text-decoration: none"> Tecnologias Utilizadas</a> <br/>
+👉<a href="#-desenvolvedor" style="text-decoration: none"> Desenvolvedor</a> <br/>
 👉<a href="#-licence" style="text-decoration: none"> Licença</a>
 
 </p>
